@@ -657,6 +657,8 @@ function setSaveStatus(message, kind = '') {
 /**
  * Upsert the current session log to /api/sessions when hosted.
  * Offline file:// exports keep local download only.
+ * Do not use fetch keepalive here: browsers cap keepalive bodies at ~64 KiB,
+ * and full move logs exceed that after a few trials.
  * @returns {Promise<void>}
  */
 async function persistSession() {
@@ -676,7 +678,6 @@ async function persistSession() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
-        keepalive: true,
       });
       if (!response.ok) {
         let detail = `HTTP ${response.status}`;
@@ -1239,6 +1240,21 @@ tsnInput.addEventListener('keydown', (event) => {
   startSession();
 });
 window.addEventListener('keydown', onKey);
+window.addEventListener('pagehide', () => {
+  if (!sessionStarted || logs.length === 0) return;
+  if (window.location.protocol === 'file:') return;
+  const body = JSON.stringify(buildSessionPayload());
+  // sendBeacon / keepalive quota is ~64 KiB; skip unload flush when too large.
+  if (body.length > 60_000) return;
+  try {
+    navigator.sendBeacon(
+      '/api/sessions',
+      new Blob([body], { type: 'application/json' }),
+    );
+  } catch {
+    /* best-effort only */
+  }
+});
 new ResizeObserver(() => {
   if (sessionStarted) redraw();
 }).observe(canvas);

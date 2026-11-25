@@ -1,10 +1,10 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
 import { neon } from '@neondatabase/serverless';
 
-/** Max JSON body size for POST (bytes). */
-const MAX_BODY_BYTES = 256 * 1024;
+/** Max JSON body size for POST (bytes). Under Vercel's 4.5 MB request limit. */
+const MAX_BODY_BYTES = 2 * 1024 * 1024;
 /** Max trials / moves arrays stored in a session payload. */
-const MAX_ARRAY_LENGTH = 500;
+const MAX_ARRAY_LENGTH = 20000;
 /** Max length for seed / clientSessionId strings. */
 const MAX_STRING_LENGTH = 128;
 /** Participant TSN: non-negative integer string (any length up to MAX_STRING_LENGTH). */
