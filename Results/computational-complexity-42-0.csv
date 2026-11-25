@@ -1,0 +1,29 @@
+seed,participant_index,phase,trial_index,trial_number,kind,label,landmark,timed,first_choice,first_choice_rt_ms,later_continuation,reached_goal,start,goal,steps,control_information_bits,default_follow_rate
+42,0,pilot,0,1,train,Train · full guidance · original,,True,learned,459,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,0,pilot,1,2,train,Train · full guidance · reflected,,True,other,542,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,0,pilot,2,3,train,Train · fading guidance · original,,True,shortcut,589,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222
+42,0,pilot,3,4,train,Train · fading guidance · reflected,,True,learned,513,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,0,pilot,4,5,aligned,Probe 1 · aligned,,True,shortcut,390,none,True,"[6, 2]","[6, 7]",11,16.07681559705083,0.2727272727272727
+42,0,pilot,5,6,conflicting,Probe 2 · conflicting,,True,other,617,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,0,pilot,6,7,conflicting,Probe 3 · conflicting,,True,shortcut,139,none,True,"[6, 2]","[6, 7]",15,23.983706192659355,0.3333333333333333
+42,0,pilot,7,8,conflicting,Probe 4 · conflicting,,True,shortcut,533,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222
+42,0,pilot,8,9,symbol-only,Probe 5 · symbol-only,,True,shortcut,470,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.4444444444444444
+42,0,pilot,9,10,conflicting,Probe 6 · conflicting,,True,shortcut,185,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333
+42,0,pilot,10,11,conflicting,Probe 7 · conflicting,,True,shortcut,186,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.4444444444444444
+42,0,pilot,11,12,symbol-only,Probe 8 · symbol-only,,True,other,192,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077
+42,0,pilot,12,13,aligned,Probe 9 · aligned,,True,shortcut,139,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.4444444444444444
+42,0,pilot,13,14,symbol-only,Probe 10 · symbol-only,,True,shortcut,347,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222
+42,0,pilot,14,15,aligned,Probe 11 · aligned,,True,other,412,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,0,pilot,15,16,aligned,Probe 12 · aligned,,True,learned,543,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,0,pilot,16,17,conflicting,Probe 13 · conflicting,,True,other,462,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,0,pilot,17,18,symbol-only,Probe 14 · symbol-only,,True,learned,261,none,True,"[6, 2]","[6, 7]",13,18.38082178394093,0.38461538461538464
+42,0,pilot,18,19,conflicting,Probe 15 · conflicting,,True,shortcut,421,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333
+42,0,pilot,19,20,symbol-only,Probe 16 · symbol-only,,True,learned,572,alternate,True,"[6, 2]","[6, 7]",17,16.789821406002684,0.7647058823529411
+42,0,pilot,20,21,aligned,Probe 17 · aligned,,True,shortcut,366,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667
+42,0,pilot,21,22,symbol-only,Probe 18 · symbol-only,,True,shortcut,430,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333
+42,0,pilot,22,23,conflicting,Probe 19 · conflicting,,True,other,572,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,0,pilot,23,24,symbol-only,Probe 20 · symbol-only,,True,other,421,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,0,pilot,24,25,symbol-only,Probe 21 · symbol-only,,True,shortcut,526,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333
+42,0,pilot,25,26,aligned,Probe 22 · aligned,,True,shortcut,406,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667
+42,0,pilot,26,27,aligned,Probe 23 · aligned,,True,learned,482,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,0,pilot,27,28,aligned,Probe 24 · aligned,,True,shortcut,574,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222

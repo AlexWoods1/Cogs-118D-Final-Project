@@ -51,6 +51,7 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+/mutants/
 
 # Translations
 *.mo
@@ -151,8 +152,20 @@ activemq-data/
 
 # Environments
 .env
+.env.local
+.env*.local
 .envrc
+.vercel
+.sessions-admin-token.local
 .venv
+node_modules/
+
+# Participant session exports (do not commit study logs)
+Data/*.json
+Data/*.csv
+
+# Generated Vercel static export (rebuild with npm run build)
+public/index.html
 env/
 venv/
 ENV/

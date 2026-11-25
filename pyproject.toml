@@ -1,7 +1,7 @@
 [project]
 name = "cogs-118d-final-project"
 version = "0.1.0"
-description = "Add your description here"
+description = "Seeded trial generation for the reflected-maze pilot"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []
@@ -11,6 +11,9 @@ dev = [
     "black>=26.10.1",
     "pytest>=9.2.0",
 ]
+mutation = [
+    "mutmut>=3.8,<4",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
@@ -19,4 +22,23 @@ testpaths = ["tests"]
 [tool.black]
 line-length = 88
 target-version = ["py314"]
+
+[tool.mutmut]
+source_paths = [
+    "maze_pilot/maze.py",
+    "maze_pilot/maze_trials.py",
+    "maze_pilot/maze_viz.py",
+]
+also_copy = [
+    "main.py",
+    "maze_pilot/__init__.py",
+    "maze_pilot/maze_viz.html",
+    "maze_pilot/maze_viz.js",
+    "maze_pilot/offline_html.py",
+    "maze_pilot/pilot_play.py",
+    "maze_pilot/pilot_play.html",
+    "maze_pilot/pilot_play.js",
+    "maze_pilot/session_cli.py",
+    "maze_pilot/trial_config.py",
+]
 
