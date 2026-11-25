@@ -307,9 +307,11 @@ def test_playable_cli_exports_offline_html(
     assert "function drawGuidance(" in html
     assert "function movesCsv(" in html
     assert "function applyParticipantTsn(" in html
+    assert "BigInt(raw) % BigInt(keys.length)" in html
     assert "function renderSessionReport(" in html
     assert 'id="download-csv"' in html
     assert 'id="participant-tsn"' in html
+    assert 'min="0"' in html
     assert 'id="report"' in html
     assert 'id="save-status"' in html
     assert "function persistSession(" in html

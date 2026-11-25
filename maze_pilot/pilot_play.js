@@ -1027,7 +1027,9 @@ function updateSessionLabel() {
 }
 
 /**
- * Parse Participant TSN and bind the matching counterbalanced schedule.
+ * Parse Participant TSN and bind a counterbalanced schedule.
+ * Any non-negative integer is accepted; schedule selection uses
+ * ``TSN % N`` over the embedded schedules (default N = 16).
  * @returns {boolean}
  */
 function applyParticipantTsn() {
@@ -1043,16 +1045,18 @@ function applyParticipantTsn() {
     tsnInput.focus();
     return false;
   }
-  const schedule = data.schedulesByIndex[raw];
+  const keys = Object.keys(data.schedulesByIndex).sort(
+    (a, b) => Number(a) - Number(b),
+  );
+  if (keys.length === 0) {
+    intakeError.textContent = 'No schedules are embedded in this export.';
+    tsnInput.focus();
+    return false;
+  }
+  const slot = keys[Number(BigInt(raw) % BigInt(keys.length))];
+  const schedule = data.schedulesByIndex[slot];
   if (!schedule || schedule.length === 0) {
-    const available = Object.keys(data.schedulesByIndex).sort(
-      (a, b) => Number(a) - Number(b),
-    );
-    const range =
-      available.length > 0
-        ? `Available TSN values: ${available[0]}–${available[available.length - 1]}.`
-        : 'No schedules are embedded in this export.';
-    intakeError.textContent = `No schedule for Participant TSN ${raw}. ${range}`;
+    intakeError.textContent = `No schedule for counterbalance slot ${slot}.`;
     tsnInput.focus();
     return false;
   }

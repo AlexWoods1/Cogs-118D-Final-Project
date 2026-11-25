@@ -55,8 +55,9 @@ uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase p
 ```
 
 Open `build/maze-pilot.html` in a browser. Enter **Participant TSN** on the start
-form; that value is the participant index and selects the matching counterbalanced
-schedule (default export embeds TSN `0`–`15`). Arrow keys or WASD move the agent.
+form; any non-negative integer works. The schedule uses `TSN % N` over the embedded
+counterbalance set (default export embeds slots `0`–`15`). Arrow keys or WASD move
+the agent.
 Pilot sessions train both reflections with full then fading guidance before the
 cue probes. **Download JSON** keeps trial summaries plus every move attempt;
 **Download CSV** writes one row per attempted move (legal and blocked), including

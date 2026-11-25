@@ -7,8 +7,8 @@ const MAX_BODY_BYTES = 256 * 1024;
 const MAX_ARRAY_LENGTH = 500;
 /** Max length for seed / clientSessionId strings. */
 const MAX_STRING_LENGTH = 128;
-/** Participant TSN: non-negative integer string, bounded length. */
-const PARTICIPANT_INDEX_RE = /^\d{1,6}$/;
+/** Participant TSN: non-negative integer string (any length up to MAX_STRING_LENGTH). */
+const PARTICIPANT_INDEX_RE = /^\d+$/;
 /** Allowed study phases. */
 const ALLOWED_PHASES = new Set(['pilot', 'test']);
 
@@ -213,7 +213,10 @@ function validatePostBody(body) {
   ) {
     return { error: 'seed or clientSessionId is too long' };
   }
-  if (!PARTICIPANT_INDEX_RE.test(participantIndex)) {
+  if (
+    !PARTICIPANT_INDEX_RE.test(participantIndex) ||
+    participantIndex.length > MAX_STRING_LENGTH
+  ) {
     return { error: 'participantIndex must be a non-negative integer' };
   }
   if (!ALLOWED_PHASES.has(phase)) {
@@ -321,7 +324,11 @@ export default async function handler(req, res) {
 
       const query = req.query ?? {};
       const participant = String(query.participant ?? '').trim();
-      if (participant && !PARTICIPANT_INDEX_RE.test(participant)) {
+      if (
+        participant &&
+        (!PARTICIPANT_INDEX_RE.test(participant) ||
+          participant.length > MAX_STRING_LENGTH)
+      ) {
         sendJson(res, 400, {
           error: 'participant must be a non-negative integer',
         });

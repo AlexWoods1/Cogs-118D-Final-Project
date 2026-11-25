@@ -43,8 +43,9 @@ change pilot/test lengths or the default first-move deadline.
 ### Seed and participant index
 
 - Schedules are deterministic given `--seed` and zero-based participant index.
-- The playable HTML start form collects **Participant TSN** and uses it as that index
-  (default export embeds schedules for TSN `0`–`15`; override with `--participant-count`).
+- The playable HTML start form collects **Participant TSN** (any non-negative integer)
+  and selects a schedule with `TSN % N` over the embedded slots (default `0`–`15`;
+  override with `--participant-count`). The raw TSN is what gets saved in the log.
 - Indices in groups of **16** counterbalance **block order** and **layout variant** assignment.
 
 ### Pilot phase (`--phase pilot`)
