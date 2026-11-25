@@ -31,7 +31,8 @@
  *   goal: Cell,
  *   centerEntry: Cell,
  *   initialVisible: Cell[],
- *   trials: PlayTrial[]
+ *   trials: PlayTrial[],
+ *   schedulesByIndex: Record<string, PlayTrial[]>
  * }} PlayData
  */
 /**
@@ -90,6 +91,7 @@ function byId(id) {
 }
 
 const data = /** @type {PlayData} */ (JSON.parse(byId('data').textContent ?? ''));
+if (!data.schedulesByIndex) data.schedulesByIndex = {};
 const canvas = /** @type {HTMLCanvasElement} */ (byId('board'));
 const instructions = byId('instructions');
 const play = byId('play');
@@ -98,8 +100,18 @@ const nextButton = /** @type {HTMLButtonElement} */ (byId('next'));
 const restartButton = /** @type {HTMLButtonElement} */ (byId('restart'));
 const downloadButton = /** @type {HTMLButtonElement} */ (byId('download'));
 const downloadCsvButton = /** @type {HTMLButtonElement} */ (byId('download-csv'));
+const tsnInput = /** @type {HTMLInputElement} */ (byId('participant-tsn'));
+const intakeError = byId('intake-error');
+const saveStatus = byId('save-status');
 /** Whether the participant has left the instruction page. */
 let sessionStarted = false;
+/** Stable id for server upserts across the browser session. */
+let clientSessionId =
+  typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+    ? crypto.randomUUID()
+    : `local-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+/** @type {Promise<void> | null} */
+let saveInFlight = null;
 const palette = getComputedStyle(document.documentElement);
 
 /** @type {number} */
@@ -578,6 +590,118 @@ function commitTrialLog() {
     reachedGoal: position[0] === data.goal[0] && position[1] === data.goal[1],
   });
   if (logs.length >= data.trials.length) renderSessionReport();
+  void persistSession();
+}
+
+/**
+ * Build the JSON payload shared by download and server save.
+ * @returns {{
+ *   seed: string,
+ *   participantIndex: string,
+ *   phase: string,
+ *   clientSessionId: string,
+ *   completed: boolean,
+ *   trials: TrialLog[],
+ *   moves: MoveRow[],
+ *   analysis: object | null
+ * }}
+ */
+function buildSessionPayload() {
+  const completed = logs.length >= data.trials.length && data.trials.length > 0;
+  /** @type {object | null} */
+  let analysis = null;
+  if (completed) {
+    const probes = logs.filter(
+      (row) =>
+        row.kind === 'symbol-only' ||
+        row.kind === 'aligned' ||
+        row.kind === 'conflicting',
+    );
+    const probeRts = probes
+      .map((row) => row.firstChoiceRtMs)
+      .filter(/** @returns {value is number} */ (value) => typeof value === 'number');
+    analysis = {
+      byCueKind: summarizeChoices(probes, 'kind'),
+      byLandmark: summarizeChoices(
+        logs.filter((row) => row.landmark !== null),
+        'landmark',
+      ),
+      laterContinuations: summarizeContinuations(logs, 'kind'),
+      calibratedDeadlineMs: calibrateDeadline(probeRts),
+    };
+  }
+  return {
+    seed: data.seed,
+    participantIndex: data.participantIndex,
+    phase: data.phase,
+    clientSessionId,
+    completed,
+    trials: logs,
+    moves: moveRows,
+    analysis,
+  };
+}
+
+/**
+ * Update the autosave status line under the maze.
+ * @param {string} message
+ * @param {'ok' | 'err' | ''} kind
+ * @returns {void}
+ */
+function setSaveStatus(message, kind = '') {
+  saveStatus.textContent = message;
+  saveStatus.classList.remove('ok', 'err');
+  if (kind) saveStatus.classList.add(kind);
+}
+
+/**
+ * Upsert the current session log to /api/sessions when hosted.
+ * Offline file:// exports keep local download only.
+ * @returns {Promise<void>}
+ */
+async function persistSession() {
+  if (!sessionStarted || logs.length === 0) return;
+  if (window.location.protocol === 'file:') {
+    setSaveStatus('Offline export: use Download JSON/CSV to keep a local copy.', '');
+    return;
+  }
+  const payload = buildSessionPayload();
+  setSaveStatus(
+    payload.completed ? 'Saving completed session…' : `Saving trial ${logs.length}…`,
+    '',
+  );
+  const run = async () => {
+    try {
+      const response = await fetch('/api/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true,
+      });
+      if (!response.ok) {
+        let detail = `HTTP ${response.status}`;
+        try {
+          const errBody = /** @type {{ error?: string }} */ (await response.json());
+          if (errBody && typeof errBody.error === 'string') detail = errBody.error;
+        } catch {
+          /* ignore non-JSON error bodies */
+        }
+        throw new Error(detail);
+      }
+      const result = /** @type {{ id?: string }} */ (await response.json());
+      setSaveStatus(
+        payload.completed
+          ? `Saved to database${result.id ? ` (${result.id.slice(0, 8)}…)` : ''}.`
+          : `Saved trial ${logs.length} of ${data.trials.length}.`,
+        'ok',
+      );
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : String(error);
+      setSaveStatus(`Autosave failed: ${reason}. Download JSON as backup.`, 'err');
+    }
+  };
+  saveInFlight = (saveInFlight ?? Promise.resolve()).then(run, run);
+  await saveInFlight;
 }
 
 /**
@@ -891,12 +1015,62 @@ function restartTrial() {
 }
 
 /**
+ * Refresh the header once seed / phase / TSN are known.
+ * @returns {void}
+ */
+function updateSessionLabel() {
+  const tsn =
+    data.participantIndex === ''
+      ? 'enter Participant TSN'
+      : `Participant ${data.participantIndex}`;
+  byId('session').textContent = `Seed ${data.seed} · ${tsn} · Phase ${data.phase}`;
+}
+
+/**
+ * Parse Participant TSN and bind the matching counterbalanced schedule.
+ * @returns {boolean}
+ */
+function applyParticipantTsn() {
+  intakeError.textContent = '';
+  const raw = tsnInput.value.trim();
+  if (raw === '') {
+    intakeError.textContent = 'Enter your Participant TSN to begin.';
+    tsnInput.focus();
+    return false;
+  }
+  if (!/^\d+$/.test(raw)) {
+    intakeError.textContent = 'Participant TSN must be a whole number (0 or greater).';
+    tsnInput.focus();
+    return false;
+  }
+  const schedule = data.schedulesByIndex[raw];
+  if (!schedule || schedule.length === 0) {
+    const available = Object.keys(data.schedulesByIndex).sort(
+      (a, b) => Number(a) - Number(b),
+    );
+    const range =
+      available.length > 0
+        ? `Available TSN values: ${available[0]}–${available[available.length - 1]}.`
+        : 'No schedules are embedded in this export.';
+    intakeError.textContent = `No schedule for Participant TSN ${raw}. ${range}`;
+    tsnInput.focus();
+    return false;
+  }
+  data.participantIndex = raw;
+  data.trials = schedule;
+  updateSessionLabel();
+  return true;
+}
+
+/**
  * Leave the instruction page and start the first trial clock.
  * @returns {void}
  */
 function startSession() {
   if (sessionStarted) return;
+  if (!applyParticipantTsn()) return;
   sessionStarted = true;
+  tsnInput.disabled = true;
   instructions.hidden = true;
   play.hidden = false;
   beginTrial();
@@ -1000,28 +1174,7 @@ function downloadBlob(blob, filename) {
  * @returns {void}
  */
 function downloadLog() {
-  const probes = logs.filter((row) =>
-    row.kind === 'symbol-only' || row.kind === 'aligned' || row.kind === 'conflicting',
-  );
-  const probeRts = probes
-    .map((row) => row.firstChoiceRtMs)
-    .filter(/** @returns {value is number} */ (value) => typeof value === 'number');
-  const payload = {
-    seed: data.seed,
-    participantIndex: data.participantIndex,
-    phase: data.phase,
-    trials: logs,
-    moves: moveRows,
-    analysis: {
-      byCueKind: summarizeChoices(probes, 'kind'),
-      byLandmark: summarizeChoices(
-        logs.filter((row) => row.landmark !== null),
-        'landmark',
-      ),
-      laterContinuations: summarizeContinuations(logs, 'kind'),
-      calibratedDeadlineMs: calibrateDeadline(probeRts),
-    },
-  };
+  const payload = buildSessionPayload();
   downloadBlob(
     new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }),
     `maze-pilot-log-${data.seed}-${data.participantIndex}.json`,
@@ -1070,15 +1223,19 @@ function onKey(event) {
   tryMove(...step);
 }
 
-byId('session').textContent =
-  `Seed ${data.seed} · Participant ${data.participantIndex} · Phase ${data.phase}`;
+updateSessionLabel();
 startButton.addEventListener('click', startSession);
 nextButton.addEventListener('click', goNext);
 restartButton.addEventListener('click', restartTrial);
 downloadButton.addEventListener('click', downloadLog);
 downloadCsvButton.addEventListener('click', downloadCsv);
+tsnInput.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter') return;
+  event.preventDefault();
+  startSession();
+});
 window.addEventListener('keydown', onKey);
 new ResizeObserver(() => {
   if (sessionStarted) redraw();
 }).observe(canvas);
-startButton.focus();
+tsnInput.focus();

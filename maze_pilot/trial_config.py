@@ -42,6 +42,11 @@ PROBE_TRIALS_PER_ORIENTATION = 4
 # Each block: DETOUR_LENGTHS × BLOCK_TRIALS_PER_SAVINGS trials (default 6).
 BLOCK_TRIALS_PER_SAVINGS = 2
 
+# --- Playable export ----------------------------------------------------------
+# Offline HTML embeds schedules for indices 0 .. COUNT-1 so the intake form can
+# treat Participant TSN as the participant index (counterbalance groups of 16).
+PARTICIPANT_EXPORT_COUNT = 16
+
 # --- Cue mapping --------------------------------------------------------------
 SYMBOLS: dict[Side, Symbol] = {"left": "circle", "right": "diamond"}
 SIDES: tuple[Side, Side] = ("left", "right")

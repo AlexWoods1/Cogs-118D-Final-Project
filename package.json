@@ -1,0 +1,18 @@
+{
+  "name": "cogs-118d-maze-pilot",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Reflected-maze pilot on Vercel with Neon Postgres session storage",
+  "scripts": {
+    "build": "uv run python -m maze_pilot.pilot_play --seed 42 --participant-count 16 --phase pilot --output public/index.html",
+    "deploy:prep": "npm run build",
+    "db:schema": "node scripts/apply-schema.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

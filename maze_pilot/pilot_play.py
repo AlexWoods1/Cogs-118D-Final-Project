@@ -43,6 +43,7 @@ from .trial_config import (
     DEADLINE_FLOOR_MS,
     DEFAULT_DEADLINE_MS,
     FADE_GUIDANCE_PREFIX_CELLS,
+    PARTICIPANT_EXPORT_COUNT,
     TRAINING_DETOUR,
     TRAINING_GUIDANCES,
     TRAINING_REFLECTIONS,
@@ -77,7 +78,11 @@ class PlayTrial(TypedDict):
 
 
 class PlayData(TypedDict):
-    """Offline session payload embedded in the playable HTML export."""
+    """Offline session payload embedded in the playable HTML export.
+
+    ``trials`` / ``participantIndex`` start empty until the intake form sets the
+    Participant TSN. Schedules for each exported index live in ``schedulesByIndex``.
+    """
 
     seed: str
     participantIndex: str
@@ -89,6 +94,7 @@ class PlayData(TypedDict):
     centerEntry: Cell
     initialVisible: list[Cell]
     trials: list[PlayTrial]
+    schedulesByIndex: dict[str, list[PlayTrial]]
 
 
 def classify_first_choice(
@@ -478,6 +484,40 @@ def play_session(
         "centerEntry": CENTER_ENTRY,
         "initialVisible": sorted(INITIAL_VISIBLE_CELLS),
         "trials": trials,
+        "schedulesByIndex": {str(participant_index): trials},
+    }
+
+
+def play_export_data(
+    seed: int,
+    phase: Phase,
+    *,
+    deadline_ms: int | None = None,
+    participant_count: int = PARTICIPANT_EXPORT_COUNT,
+    max_trials: int | None = None,
+) -> PlayData:
+    """Embed schedules for Participant TSN values ``0 .. participant_count-1``."""
+    if participant_count <= 0:
+        raise ValueError("participant_count must be positive")
+    schedules: dict[str, list[PlayTrial]] = {}
+    for index in range(participant_count):
+        session = play_session(seed, index, phase, deadline_ms=deadline_ms)
+        trials = session["trials"]
+        if max_trials is not None:
+            trials = trials[:max_trials]
+        schedules[str(index)] = trials
+    return {
+        "seed": str(seed),
+        "participantIndex": "",
+        "phase": phase,
+        "width": WIDTH,
+        "height": HEIGHT,
+        "start": START,
+        "goal": GOAL,
+        "centerEntry": CENTER_ENTRY,
+        "initialVisible": sorted(INITIAL_VISIBLE_CELLS),
+        "trials": [],
+        "schedulesByIndex": schedules,
     }
 
 
@@ -514,6 +554,15 @@ def _parse_args() -> argparse.Namespace:
         help="Optional cap on exported trials after training/probes are built.",
     )
     parser.add_argument(
+        "--participant-count",
+        type=int,
+        default=PARTICIPANT_EXPORT_COUNT,
+        help=(
+            "Embed schedules for Participant TSN 0 .. N-1 "
+            f"(default {PARTICIPANT_EXPORT_COUNT})."
+        ),
+    )
+    parser.add_argument(
         "--analyze",
         type=Path,
         default=None,
@@ -526,6 +575,8 @@ def _parse_args() -> argparse.Namespace:
         parser.error("--deadline-ms must be positive")
     if args.max_trials is not None and args.max_trials <= 0:
         parser.error("--max-trials must be positive")
+    if args.participant_count is not None and args.participant_count <= 0:
+        parser.error("--participant-count must be positive")
     return args
 
 
@@ -538,14 +589,14 @@ def main() -> None:
             raise SystemExit("Play log must be a JSON object")
         print(format_analysis_report(analyze_session_log(payload)), end="")
         return
-    session = play_session(
+    # Intake form treats Participant TSN as the participant index; embed 0..N-1.
+    session = play_export_data(
         args.seed,
-        args.participant_index,
         args.phase,
         deadline_ms=args.deadline_ms,
+        participant_count=args.participant_count,
+        max_trials=args.max_trials,
     )
-    if args.max_trials is not None:
-        session["trials"] = session["trials"][: args.max_trials]
     write_playable(session, args.output)
     print(args.output.resolve())
 

@@ -54,7 +54,9 @@ uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase t
 uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase pilot --max-trials 8
 ```
 
-Open `build/maze-pilot.html` in a browser. Arrow keys or WASD move the agent.
+Open `build/maze-pilot.html` in a browser. Enter **Participant TSN** on the start
+form; that value is the participant index and selects the matching counterbalanced
+schedule (default export embeds TSN `0`–`15`). Arrow keys or WASD move the agent.
 Pilot sessions train both reflections with full then fading guidance before the
 cue probes. **Download JSON** keeps trial summaries plus every move attempt;
 **Download CSV** writes one row per attempted move (legal and blocked), including
@@ -66,6 +68,34 @@ uv run python -m maze_pilot.pilot_play --analyze path/to/maze-pilot-log.json
 ```
 
 Use `--max-trials` to cap the exported schedule while calibrating.
+
+## Deploy (Vercel + Neon)
+
+Live app: [https://cogs-118d-maze-pilot.vercel.app](https://cogs-118d-maze-pilot.vercel.app)
+
+After each completed trial the browser POSTs the session log to `/api/sessions`,
+which upserts into Neon Postgres (`pilot_sessions`) keyed by Participant TSN
+(`participant_index`). A new session with an existing TSN replaces the prior
+row. Downloads remain available as a backup. Rebuild the static export before
+redeploying:
+
+```sh
+npm install
+npm run build
+vercel --prod
+```
+
+List saved sessions (requires `SESSIONS_ADMIN_TOKEN`):
+
+```sh
+curl -H "Authorization: Bearer $SESSIONS_ADMIN_TOKEN" \
+  https://cogs-118d-maze-pilot.vercel.app/api/sessions
+```
+
+`POST /api/sessions` accepts same-origin browser saves only (CORS allowlist),
+validates TSN/phase/size, and stores a whitelisted payload. Set
+`SESSIONS_ALLOWED_ORIGIN` if the production host differs from the Vercel default.
+Keep `SESSIONS_ADMIN_TOKEN` long and random; never commit `.env.local`.
 
 ## Testing
 
@@ -83,6 +113,3 @@ uv run --locked --group mutation python tools/mutmut_windows.py results
 ```
 
 On Linux or macOS you can use `mutmut run` directly.
-
-The [Cursor handoff](HANDOFF.md) records the study design and the remaining
-playable pilot milestones.

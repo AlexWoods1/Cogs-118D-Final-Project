@@ -119,6 +119,45 @@
     }
     #instructions li { margin-bottom: 8px; }
     #instructions li:last-child { margin-bottom: 0; }
+    .intake {
+      display: grid;
+      gap: 8px;
+      margin: 0 0 16px;
+      max-width: 280px;
+    }
+    .intake label {
+      font-weight: 650;
+      color: #1b2d3a;
+    }
+    .intake input {
+      min-height: 42px;
+      padding: 8px 12px;
+      font: inherit;
+      color: #1b2d3a;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .intake input:focus {
+      outline: 2px solid #24455d;
+      outline-offset: 2px;
+    }
+    #intake-error {
+      min-height: 1.3em;
+      margin: 0 0 12px;
+      font-size: .95rem;
+      font-weight: 600;
+      color: #9b1c1c;
+    }
+    #save-status {
+      min-height: 1.3em;
+      margin: 12px 0 0;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    #save-status.ok { color: #0f5c45; }
+    #save-status.err { color: #9b1c1c; }
     #play[hidden], #instructions[hidden] { display: none; }
   </style>
 </head>
@@ -134,8 +173,23 @@
         <li>Move from <strong>S</strong> to <strong>G</strong> with arrow keys or WASD. Only open corridors are legal; fog lifts as you explore.</li>
         <li>Training marks the learned route. The landmark above S maps to the first turn: teal circle = left, coral diamond = right.</li>
         <li>Later trials keep that landmark. An amber star beacon may also appear on a wall. Cues are hints only and do not open walls.</li>
-        <li>Every trial is timed: make your first move before the deadline. After each goal, press <strong>Space</strong> or Next trial. Download the log when finished.</li>
+        <li>Every trial is timed: make your first move before the deadline. After each goal, press <strong>Space</strong> or Next trial. Progress saves to the study database automatically; you can still download a backup log when finished.</li>
       </ol>
+      <div class="intake">
+        <label for="participant-tsn">Participant TSN</label>
+        <input
+          id="participant-tsn"
+          name="participant-tsn"
+          type="number"
+          inputmode="numeric"
+          min="0"
+          step="1"
+          required
+          autocomplete="off"
+          placeholder="e.g. 0"
+        >
+      </div>
+      <p id="intake-error" role="alert"></p>
       <button type="button" id="start">Start</button>
     </section>
     <section id="play" hidden>
@@ -150,11 +204,13 @@
           <button type="button" id="download-csv" class="secondary">Download CSV</button>
         </div>
       </figure>
+      <p id="save-status" role="status" aria-live="polite"></p>
       <p id="help">
         Use arrow keys or WASD to move. After a trial ends, press Space (or Next trial)
         to continue. Only open edges are legal. Fog lifts on visited cells. Training
         shows a fading learned-route guide. The orientation symbol and beacon (when
-        present) are cues only and do not open walls.
+        present) are cues only and do not open walls. Session data uploads to the
+        database after each completed trial.
       </p>
       <pre id="log" aria-live="polite"></pre>
       <pre id="report" aria-live="polite"></pre>

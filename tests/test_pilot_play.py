@@ -266,6 +266,16 @@ def test_test_session_times_every_trial() -> None:
         assert record["deadline_ms"] == 800
 
 
+def test_play_export_data_keys_schedules_by_tsn() -> None:
+    """Export leaves trials empty until the intake form picks a Participant TSN."""
+    bundle = pilot_play.play_export_data(42, "pilot", participant_count=2, max_trials=5)
+    assert bundle["participantIndex"] == ""
+    assert bundle["trials"] == []
+    assert set(bundle["schedulesByIndex"]) == {"0", "1"}
+    assert len(bundle["schedulesByIndex"]["0"]) == 5
+    assert len(bundle["schedulesByIndex"]["1"]) == 5
+
+
 def test_playable_cli_exports_offline_html(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -280,8 +290,8 @@ def test_playable_cli_exports_offline_html(
             "pilot_play",
             "--seed",
             "42",
-            "--participant-index",
-            "0",
+            "--participant-count",
+            "2",
             "--phase",
             "pilot",
             "--output",
@@ -296,9 +306,14 @@ def test_playable_cli_exports_offline_html(
     assert "function tryMove(" in html
     assert "function drawGuidance(" in html
     assert "function movesCsv(" in html
+    assert "function applyParticipantTsn(" in html
     assert "function renderSessionReport(" in html
     assert 'id="download-csv"' in html
+    assert 'id="participant-tsn"' in html
     assert 'id="report"' in html
+    assert 'id="save-status"' in html
+    assert "function persistSession(" in html
+    assert "function buildSessionPayload(" in html
     embedded = re.search(
         r'<script type="application/json" id="data">(.*?)</script>', html
     )
@@ -306,7 +321,10 @@ def test_playable_cli_exports_offline_html(
     data = json.loads(embedded[1])
     assert data["phase"] == "pilot"
     assert data["seed"] == "42"
-    assert len(data["trials"]) == 4 + len(generate_probes(42, 0))
+    assert data["participantIndex"] == ""
+    assert data["trials"] == []
+    assert set(data["schedulesByIndex"]) == {"0", "1"}
+    assert len(data["schedulesByIndex"]["0"]) == 4 + len(generate_probes(42, 0))
 
 
 def test_playable_cli_rejects_negative_index(
