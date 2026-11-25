@@ -9,7 +9,7 @@ uv run python -m maze_pilot.maze_trials --seed 42 --participant-index 0
 uv run python -m maze_pilot.maze_trials --seed 42 --participant-index 0 --phase pilot
 ```
 
-Source lives under [`maze_pilot/`](maze_pilot/). Root `maze_trials` / `maze_viz` / `pilot_play` shims still work for short `-m` names.
+Source lives under [`maze_pilot/`](maze_pilot/).
 
 The default command emits JSON for four test blocks. Each block crosses landmark
 reliability and a timed or untimed first decision, and contains one trial at each
