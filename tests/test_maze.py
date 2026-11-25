@@ -4,7 +4,7 @@ from dataclasses import replace
 
 import pytest
 
-from maze import (
+from maze_pilot.maze import (
     CENTER_ENTRY,
     GOAL,
     INITIAL_VISIBLE_CELLS,
@@ -20,7 +20,7 @@ from maze import (
     reflect_cell,
     verify_maze,
 )
-from maze_trials import _learned_side, _session_rng, grid_metadata
+from maze_pilot.maze_trials import _learned_side, _session_rng, grid_metadata
 
 
 def test_edge_between_uses_lexicographic_order() -> None:
@@ -175,7 +175,7 @@ def test_initial_visible_edges_match_reflection() -> None:
 
 def test_grid_metadata_matches_maze_constants() -> None:
     """JSON grid block must expose the shared layout constants."""
-    from maze import HEIGHT, WIDTH
+    from maze_pilot.maze import HEIGHT, WIDTH
 
     grid = grid_metadata()
     assert grid == {

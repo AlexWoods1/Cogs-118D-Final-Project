@@ -27,8 +27,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from maze import GOAL, START, Cell, Maze  # noqa: E402
-from maze_trials import generate_blocks  # noqa: E402
+from maze_pilot.maze import GOAL, START, Cell, Maze  # noqa: E402
+from maze_pilot.maze_trials import generate_blocks  # noqa: E402
 
 Action = tuple[int, int]
 
@@ -240,7 +240,14 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--results-dir",
         type=Path,
-        default=ROOT / "results",
+        default=ROOT / "Results",
+        help="Directory for the CSV table (default: Results/).",
+    )
+    parser.add_argument(
+        "--media-dir",
+        type=Path,
+        default=ROOT / "media",
+        help="Directory for the PNG plot (default: media/).",
     )
     parser.add_argument(
         "--prefer-mass",
@@ -258,8 +265,10 @@ def main() -> None:
     if not rows:
         raise SystemExit("No scored trials found in log.")
 
+    args.results_dir.mkdir(parents=True, exist_ok=True)
+    args.media_dir.mkdir(parents=True, exist_ok=True)
     csv_path = args.results_dir / "computational-complexity-42-0.csv"
-    plot_path = args.results_dir / "computational-complexity-42-0.png"
+    plot_path = args.media_dir / "computational-complexity-42-0.png"
     write_csv(rows, csv_path)
     plot_control_information(rows, plot_path)
 

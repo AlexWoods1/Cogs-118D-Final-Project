@@ -5,9 +5,15 @@ from pathlib import Path
 
 import pytest
 
-import pilot_play
-from maze import CENTER_ENTRY, GOAL, INITIAL_VISIBLE_CELLS, START, edge_between
-from maze_trials import generate_blocks, generate_probes
+import maze_pilot.pilot_play as pilot_play
+from maze_pilot.maze import (
+    CENTER_ENTRY,
+    GOAL,
+    INITIAL_VISIBLE_CELLS,
+    START,
+    edge_between,
+)
+from maze_pilot.maze_trials import generate_blocks, generate_probes
 
 
 def test_classify_first_choice_distinguishes_learned_shortcut_and_other() -> None:
@@ -232,17 +238,20 @@ def test_play_session_includes_training_then_probes() -> None:
     assert len(train) == 4
     assert {trial["guidance"] for trial in train} == {"full", "fade"}
     assert {trial["reflected"] for trial in train} == {False, True}
+    assert all(trial["timed"] and trial["deadline_ms"] == 800 for trial in train)
     assert len(probe_trials) == len(probes)
     for record, probe in zip(probe_trials, probes, strict=True):
         assert record["kind"] == probe.kind
         assert record["guidance"] == "none"
+        assert record["timed"] is True
+        assert record["deadline_ms"] == 800
         assert record["learned_side"] == probe.trial.learned_side
         assert tuple(record["learned_route"]) == probe.trial.maze.learned_route
         assert tuple(record["later_junction"]) == probe.trial.maze.later_junction
 
 
-def test_test_session_applies_deadline_only_to_timed_blocks() -> None:
-    """Timed test blocks receive the calibrated deadline; untimed blocks do not."""
+def test_test_session_times_every_trial() -> None:
+    """Playable test exports apply the first-move deadline to every trial."""
     session = pilot_play.play_session(42, 0, "test", deadline_ms=800)
     blocks = generate_blocks(42, 0)
     expected = [trial for block in blocks for trial in block.trials]
@@ -253,8 +262,8 @@ def test_test_session_applies_deadline_only_to_timed_blocks() -> None:
         strict=True,
     ):
         assert record["landmark"] == block.condition.landmark
-        assert record["timed"] is block.condition.timed
-        assert record["deadline_ms"] == (800 if block.condition.timed else None)
+        assert record["timed"] is True
+        assert record["deadline_ms"] == 800
 
 
 def test_playable_cli_exports_offline_html(
@@ -297,7 +306,7 @@ def test_playable_cli_exports_offline_html(
     data = json.loads(embedded[1])
     assert data["phase"] == "pilot"
     assert data["seed"] == "42"
-    assert len(data["trials"]) == 16
+    assert len(data["trials"]) == 4 + len(generate_probes(42, 0))
 
 
 def test_playable_cli_rejects_negative_index(

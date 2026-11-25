@@ -12,11 +12,11 @@ ROOT = Path(__file__).resolve().parent
 PROJECT = ROOT.parent
 sys.path.insert(0, str(PROJECT))
 
-from maze import HEIGHT, WIDTH  # noqa: E402
-from maze_trials import generate_blocks  # noqa: E402
+from maze_pilot.maze import HEIGHT, WIDTH  # noqa: E402
+from maze_pilot.maze_trials import generate_blocks  # noqa: E402
 
 LOG = ROOT / "maze-pilot-log-42-0 (1).json"
-OUT = ROOT / "trial-paths-42-0.png"
+OUT = PROJECT / "media" / "trial-paths-42-0.png"
 
 CHOICE_COLOR = {
     "shortcut": "#1f77b4",

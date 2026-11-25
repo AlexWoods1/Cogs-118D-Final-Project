@@ -319,7 +319,30 @@ function drawBoard(ctx) {
 }
 
 /**
- * Draw the orientation symbol above start.
+ * Draw a filled polygon path in grid coordinates.
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {Cell[]} points
+ * @param {string} fill
+ * @param {string} ink
+ * @param {number} [width]
+ * @returns {void}
+ */
+function polygon(ctx, points, fill, ink, width = 0.06) {
+  ctx.beginPath();
+  ctx.moveTo(...points[0]);
+  for (const point of points.slice(1)) ctx.lineTo(...point);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.strokeStyle = ink;
+  ctx.lineWidth = width;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+}
+
+/**
+ * Draw the orientation landmark above start (matches media/landmark-*.svg).
+ * Circle = teal bullseye (left); diamond = coral diamond (right).
  * @param {CanvasRenderingContext2D} ctx
  * @param {PlayTrial['symbol']} symbol
  * @returns {void}
@@ -327,24 +350,43 @@ function drawBoard(ctx) {
 function drawSymbol(ctx, symbol) {
   const [x, y] = center([data.start[0], data.start[1] - 1]);
   if (symbol === 'circle') {
-    disk(ctx, [x, y], 0.19, '#fff', '#304456', 0.065);
+    disk(ctx, [x, y], 0.28, '#0f766e', '#143243', 0.07);
+    ctx.beginPath();
+    ctx.arc(x, y, 0.15, 0, Math.PI * 2);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 0.07;
+    ctx.stroke();
+    disk(ctx, [x, y], 0.055, '#ffffff', '#ffffff', 0.02);
     return;
   }
-  ctx.beginPath();
-  ctx.moveTo(x, y - 0.23);
-  ctx.lineTo(x + 0.23, y);
-  ctx.lineTo(x, y + 0.23);
-  ctx.lineTo(x - 0.23, y);
-  ctx.closePath();
-  ctx.fillStyle = '#fff';
-  ctx.fill();
-  ctx.strokeStyle = '#304456';
-  ctx.lineWidth = 0.065;
-  ctx.stroke();
+  polygon(
+    ctx,
+    [
+      [x, y - 0.3],
+      [x + 0.3, y],
+      [x, y + 0.3],
+      [x - 0.3, y],
+    ],
+    '#c2410c',
+    '#143243',
+    0.07,
+  );
+  polygon(
+    ctx,
+    [
+      [x, y - 0.14],
+      [x + 0.14, y],
+      [x, y + 0.14],
+      [x - 0.14, y],
+    ],
+    '#fdba74',
+    '#fdba74',
+    0.02,
+  );
 }
 
 /**
- * Draw the beacon on a wall boundary without opening it.
+ * Draw the beacon star on a wall boundary without opening it.
  * @param {CanvasRenderingContext2D} ctx
  * @param {Edge} beacon
  * @returns {void}
@@ -353,11 +395,18 @@ function drawBeacon(ctx, beacon) {
   const [a, b] = beacon.map(center);
   const x = (a[0] + b[0]) / 2;
   const y = (a[1] + b[1]) / 2;
-  const dx = (b[1] - a[1]) * 0.25;
-  const dy = (a[0] - b[0]) * 0.25;
-  const segment = /** @type {Edge} */ ([[x - dx, y - dy], [x + dx, y + dy]]);
-  stroke(ctx, segment, '#70461e', 0.24);
-  stroke(ctx, segment, color('--beacon'), 0.15);
+  const tips = 5;
+  const outer = 0.28;
+  const inner = 0.12;
+  /** @type {Cell[]} */
+  const points = [];
+  for (let i = 0; i < tips * 2; i += 1) {
+    const radius = i % 2 === 0 ? outer : inner;
+    const angle = -Math.PI / 2 + (i * Math.PI) / tips;
+    points.push([x + Math.cos(angle) * radius, y + Math.sin(angle) * radius]);
+  }
+  polygon(ctx, points, color('--beacon'), '#7c2d12', 0.055);
+  disk(ctx, [x, y], 0.06, '#fff7ed', '#7c2d12', 0.03);
 }
 
 /**
@@ -470,26 +519,6 @@ function updateHud() {
   } else {
     byId('status').textContent = 'Find the goal. Only open corridors are walkable.';
   }
-  byId('log').textContent = JSON.stringify(
-    {
-      seed: data.seed,
-      participantIndex: data.participantIndex,
-      phase: data.phase,
-      completed: logs,
-      moves: moveRows.length,
-      current: {
-        trialIndex,
-        trialAttempt,
-        path,
-        firstChoice,
-        firstChoiceRtMs,
-        laterContinuation,
-        trialDone,
-      },
-    },
-    null,
-    2,
-  );
   nextButton.disabled = !(trialDone && trialIndex + 1 < data.trials.length);
 }
 

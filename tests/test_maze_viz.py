@@ -6,9 +6,16 @@ from pathlib import Path
 
 import pytest
 
-import maze_viz
-from maze import CENTER_ENTRY, GOAL, HEIGHT, INITIAL_VISIBLE_CELLS, START, WIDTH
-from maze_trials import BEACON_EDGES, generate_blocks, generate_probes
+import maze_pilot.maze_viz as maze_viz
+from maze_pilot.maze import (
+    CENTER_ENTRY,
+    GOAL,
+    HEIGHT,
+    INITIAL_VISIBLE_CELLS,
+    START,
+    WIDTH,
+)
+from maze_pilot.maze_trials import BEACON_EDGES, generate_blocks, generate_probes
 
 
 @pytest.mark.parametrize(

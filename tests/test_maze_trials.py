@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pytest
 
-from maze import (
+from maze_pilot.maze import (
     CENTER_ENTRY,
     Edge,
     GOAL,
@@ -21,7 +21,7 @@ from maze import (
     reflect_cell,
     verify_maze,
 )
-from maze_trials import (
+from maze_pilot.maze_trials import (
     BEACON_EDGES,
     Phase,
     Trial,
@@ -143,7 +143,14 @@ def test_schedule_is_reproducible_and_balances_layouts_and_order() -> None:
             transitions[first.condition, second.condition] += 1
         for position, block in enumerate(blocks):
             block_positions[block.condition, position] += 1
-            assert sorted(trial.shortcut_savings for trial in block.trials) == [2, 4, 6]
+            assert sorted(trial.shortcut_savings for trial in block.trials) == [
+                2,
+                2,
+                4,
+                4,
+                6,
+                6,
+            ]
             for trial in block.trials:
                 layout_assignments[block.condition, trial.maze.template_id] += 1
                 if block.condition.landmark == "informative":
@@ -153,7 +160,7 @@ def test_schedule_is_reproducible_and_balances_layouts_and_order() -> None:
 
     assert len(block_positions) == 16 and set(block_positions.values()) == {4}
     assert len(transitions) == 12 and set(transitions.values()) == {4}
-    assert len(layout_assignments) == 48 and set(layout_assignments.values()) == {4}
+    assert len(layout_assignments) == 48 and set(layout_assignments.values()) == {8}
     assert random_cues == {
         ("left", "left"),
         ("left", "right"),
@@ -178,7 +185,7 @@ def test_probes_cover_both_orientations_for_every_cue_type() -> None:
             assert trial.beacon_side == trial.learned_side
         else:
             assert trial.beacon_side not in (None, trial.learned_side)
-    assert len(coverage) == 6 and set(coverage.values()) == {2}
+    assert len(coverage) == 6 and set(coverage.values()) == {4}
 
 
 def _assert_trial_record(record: dict[str, object], trial: Trial) -> None:
@@ -271,13 +278,13 @@ def test_generator_cli_defaults_to_the_first_test_session(
 
 def test_generate_blocks_uses_the_test_phase_stream() -> None:
     """Block scheduling must key the RNG with the test phase label."""
-    with patch("maze_trials._session_rng", return_value=Random(0)) as rng:
+    with patch("maze_pilot.maze_trials._session_rng", return_value=Random(0)) as rng:
         generate_blocks(11, 2)
     rng.assert_called_once_with(11, 2, "test")
 
 
 def test_generate_probes_uses_the_pilot_phase_stream() -> None:
     """Probe scheduling must key the RNG with the pilot phase and seed."""
-    with patch("maze_trials._session_rng", return_value=Random(0)) as rng:
+    with patch("maze_pilot.maze_trials._session_rng", return_value=Random(0)) as rng:
         generate_probes(11, 2)
     rng.assert_called_once_with(11, 2, "pilot")

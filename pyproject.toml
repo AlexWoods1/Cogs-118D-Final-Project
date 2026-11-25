@@ -24,15 +24,20 @@ line-length = 88
 target-version = ["py314"]
 
 [tool.mutmut]
-source_paths = ["maze.py", "maze_trials.py", "maze_viz.py"]
+source_paths = [
+    "maze_pilot/maze.py",
+    "maze_pilot/maze_trials.py",
+    "maze_pilot/maze_viz.py",
+]
 also_copy = [
     "main.py",
-    "maze_viz.html",
-    "maze_viz.js",
-    "offline_html.py",
-    "pilot_play.py",
-    "pilot_play.html",
-    "pilot_play.js",
-    "session_cli.py",
+    "maze_pilot/__init__.py",
+    "maze_pilot/maze_viz.html",
+    "maze_pilot/maze_viz.js",
+    "maze_pilot/offline_html.py",
+    "maze_pilot/pilot_play.py",
+    "maze_pilot/pilot_play.html",
+    "maze_pilot/pilot_play.js",
+    "maze_pilot/session_cli.py",
 ]
 

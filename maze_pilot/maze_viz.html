@@ -14,7 +14,9 @@
       --border: #ccd8de;
       --learned: #007e70;
       --shortcut: #7a3fa5;
-      --beacon: #d4871d;
+      --beacon: #f59e0b;
+      --symbol-circle: #0f766e;
+      --symbol-diamond: #c2410c;
       --fog: #243749;
     }
     * { box-sizing: border-box; }
@@ -76,7 +78,19 @@
     .legend li { display: inline-flex; align-items: center; gap: 6px; }
     .mark { display: inline-block; width: 16px; height: 0; border-top: 3px solid; }
     .mark.fog { height: 10px; border: 0; border-radius: 2px; background: var(--fog); }
-    .mark.beacon { border-color: var(--beacon); border-radius: 3px; }
+    .mark.beacon {
+      width: 14px;
+      height: 14px;
+      border: 0;
+      background: var(--beacon);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .legend-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      vertical-align: middle;
+    }
     .mark.learned { border-color: var(--learned); }
     .mark.shortcut { border-color: var(--shortcut); border-top-style: dashed; }
     .mark.junction { width: 11px; height: 11px; border: 2px solid; border-radius: 50%; }
@@ -108,8 +122,8 @@
         </figcaption>
         <canvas id="participant" role="img"></canvas>
         <ul class="legend">
-          <li><span aria-hidden="true" id="symbol-mark"></span> Orientation symbol</li>
-          <li><span aria-hidden="true" class="mark beacon"></span> Beacon</li>
+          <li><img class="legend-icon" id="symbol-mark" src="../media/landmark-circle.svg" alt=""> Orientation symbol</li>
+          <li><img class="legend-icon" src="../media/landmark-beacon.svg" alt=""> Beacon</li>
           <li><span aria-hidden="true" class="mark fog"></span> Fog</li>
         </ul>
       </figure>

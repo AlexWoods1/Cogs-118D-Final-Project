@@ -12,7 +12,7 @@
       background: #eef3f5;
       --secondary: #506474;
       --border: #ccd8de;
-      --beacon: #d4871d;
+      --beacon: #f59e0b;
       --fog: #243749;
       --player: #c45c26;
       --panel: #fff;
@@ -79,7 +79,10 @@
       background: #e6eef1;
     }
     #help { margin-top: 14px; font-size: .9rem; line-height: 1.45; }
-    #log, #report {
+    #log {
+      display: none;
+    }
+    #report {
       margin-top: 16px;
       padding: 12px;
       max-height: 220px;
@@ -129,9 +132,9 @@
       <h2 id="instructions-title">Instructions</h2>
       <ol>
         <li>Move from <strong>S</strong> to <strong>G</strong> with arrow keys or WASD. Only open corridors are legal; fog lifts as you explore.</li>
-        <li>Training marks the learned route. The symbol above S maps to the first turn: circle = left, diamond = right.</li>
-        <li>Later trials keep the symbol. A beacon may also appear. Cues are hints only and do not open walls.</li>
-        <li>If a trial is timed, make your first move before the deadline. After each goal, press Next trial. Download the log when finished.</li>
+        <li>Training marks the learned route. The landmark above S maps to the first turn: teal circle = left, coral diamond = right.</li>
+        <li>Later trials keep that landmark. An amber star beacon may also appear on a wall. Cues are hints only and do not open walls.</li>
+        <li>Every trial is timed: make your first move before the deadline. After each goal, press Next trial. Download the log when finished.</li>
       </ol>
       <button type="button" id="start">Start</button>
     </section>

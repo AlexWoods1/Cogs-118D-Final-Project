@@ -5,9 +5,11 @@ movement between adjacent cells requires an open edge.
 
 ```sh
 uv sync --locked --dev
-uv run python -m maze_trials --seed 42 --participant-index 0
-uv run python -m maze_trials --seed 42 --participant-index 0 --phase pilot
+uv run python -m maze_pilot.maze_trials --seed 42 --participant-index 0
+uv run python -m maze_pilot.maze_trials --seed 42 --participant-index 0 --phase pilot
 ```
+
+Source lives under [`maze_pilot/`](maze_pilot/). Root `maze_trials` / `maze_viz` / `pilot_play` shims still work for short `-m` names.
 
 The default command emits JSON for four test blocks. Each block crosses landmark
 reliability and a timed or untimed first decision, and contains one trial at each
@@ -32,7 +34,7 @@ with the full layout. The full view overlays the learned route and a shortest
 shortcut through the center exit, and marks the later junction.
 
 ```sh
-uv run python -m maze_viz --seed 42 --participant-index 0
+uv run python -m maze_pilot.maze_viz --seed 42 --participant-index 0
 ```
 
 Open `build/maze-preview.html` in a browser. The phase and trial selectors cover
@@ -47,9 +49,9 @@ Scoring uses `learned_side`, `learned_route`, and `later_junction` from the
 generator.
 
 ```sh
-uv run python -m pilot_play --seed 42 --participant-index 0 --phase pilot
-uv run python -m pilot_play --seed 42 --participant-index 0 --phase test --deadline-ms 800
-uv run python -m pilot_play --seed 42 --participant-index 0 --phase pilot --max-trials 8
+uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase pilot
+uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase test --deadline-ms 800
+uv run python -m maze_pilot.pilot_play --seed 42 --participant-index 0 --phase pilot --max-trials 8
 ```
 
 Open `build/maze-pilot.html` in a browser. Arrow keys or WASD move the agent.
@@ -60,7 +62,7 @@ timeouts. After all trials, the page shows a condition report and a calibrated
 deadline. Analyze a saved log from the CLI:
 
 ```sh
-uv run python -m pilot_play --analyze path/to/maze-pilot-log.json
+uv run python -m maze_pilot.pilot_play --analyze path/to/maze-pilot-log.json
 ```
 
 Use `--max-trials` to cap the exported schedule while calibrating.
@@ -76,8 +78,8 @@ Run mutation tests locally. On Windows, use the spawn-based shim (set `PYTHONUTF
 if mutant generation hits a console encoding error):
 
 ```sh
-uv run --locked --group mutation python mutmut_windows.py run
-uv run --locked --group mutation python mutmut_windows.py results
+uv run --locked --group mutation python tools/mutmut_windows.py run
+uv run --locked --group mutation python tools/mutmut_windows.py results
 ```
 
 On Linux or macOS you can use `mutmut run` directly.

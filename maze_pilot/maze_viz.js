@@ -211,33 +211,52 @@ function drawEndpoint(ctx, cell, label, minimumSize) {
 }
 
 /**
- * Draw the learned orientation symbol immediately above the start.
+ * Draw a filled polygon path in grid coordinates.
+ * @param {CanvasRenderingContext2D} ctx
+ * @param {Cell[]} points
+ * @param {string} fill
+ * @param {string} ink
+ * @param {number} [width]
+ * @returns {void}
+ */
+function polygon(ctx, points, fill, ink, width = .06) {
+  ctx.beginPath();
+  ctx.moveTo(...points[0]);
+  for (const point of points.slice(1)) ctx.lineTo(...point);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+  ctx.strokeStyle = ink;
+  ctx.lineWidth = width;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+}
+
+/**
+ * Draw the orientation landmark above start (matches media/landmark-*.svg).
  * @param {CanvasRenderingContext2D} ctx
  * @param {Trial['symbol']} symbol
  * @returns {void}
  */
 function drawSymbol(ctx, symbol) {
   const [x, y] = center([data.start[0], data.start[1] - 1]);
+  // Matches media/landmark-*.svg: teal bullseye (left) vs coral diamond (right).
   if (symbol === 'circle') {
-    disk(ctx, [x, y], .19, '#fff', '#304456', .065);
+    disk(ctx, [x, y], .28, '#0f766e', '#143243', .07);
+    ctx.beginPath();
+    ctx.arc(x, y, .15, 0, Math.PI * 2);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = .07;
+    ctx.stroke();
+    disk(ctx, [x, y], .055, '#ffffff', '#ffffff', .02);
     return;
   }
-  // The diamond gives the orientation cue a shape distinct from the endpoints.
-  ctx.beginPath();
-  ctx.moveTo(x, y - .23);
-  ctx.lineTo(x + .23, y);
-  ctx.lineTo(x, y + .23);
-  ctx.lineTo(x - .23, y);
-  ctx.closePath();
-  ctx.fillStyle = '#fff';
-  ctx.fill();
-  ctx.strokeStyle = '#304456';
-  ctx.lineWidth = .065;
-  ctx.stroke();
+  polygon(ctx, [[x, y - .3], [x + .3, y], [x, y + .3], [x - .3, y]], '#c2410c', '#143243', .07);
+  polygon(ctx, [[x, y - .14], [x + .14, y], [x, y + .14], [x - .14, y]], '#fdba74', '#fdba74', .02);
 }
 
 /**
- * Draw the beacon on its boundary without changing the wall.
+ * Draw the beacon star on its boundary without changing the wall.
  * @param {CanvasRenderingContext2D} ctx
  * @param {Edge} beacon
  * @returns {void}
@@ -246,12 +265,18 @@ function drawBeacon(ctx, beacon) {
   const [a, b] = beacon.map(center);
   const x = (a[0] + b[0]) / 2;
   const y = (a[1] + b[1]) / 2;
-  // A perpendicular offset follows the shared boundary between the two cells.
-  const dx = (b[1] - a[1]) * .25;
-  const dy = (a[0] - b[0]) * .25;
-  const segment = /** @type {Edge} */ ([[x - dx, y - dy], [x + dx, y + dy]]);
-  stroke(ctx, segment, '#70461e', .24);
-  stroke(ctx, segment, color('--beacon'), .15);
+  const tips = 5;
+  const outer = .28;
+  const inner = .12;
+  /** @type {Cell[]} */
+  const points = [];
+  for (let i = 0; i < tips * 2; i += 1) {
+    const radius = i % 2 === 0 ? outer : inner;
+    const angle = -Math.PI / 2 + (i * Math.PI) / tips;
+    points.push([x + Math.cos(angle) * radius, y + Math.sin(angle) * radius]);
+  }
+  polygon(ctx, points, color('--beacon'), '#7c2d12', .055);
+  disk(ctx, [x, y], .06, '#fff7ed', '#7c2d12', .03);
 }
 
 /**
@@ -318,7 +343,9 @@ function updateTrial() {
     : 'No beacon';
   const orientation = trial.reflected ? 'Reflected layout' : 'Original layout';
   byId('trial-summary').textContent = `${orientation} · ${beacon}`;
-  byId('symbol-mark').textContent = trial.symbol === 'diamond' ? '◇' : '○';
+  byId('symbol-mark').src =
+    trial.symbol === 'diamond' ? '../media/landmark-diamond.svg' : '../media/landmark-circle.svg';
+  byId('symbol-mark').alt = trial.symbol === 'diamond' ? 'Diamond (right)' : 'Circle (left)';
   byId('savings').textContent = `The shortcut saves ${learned - shortcut} moves.`;
   byId('learned-length').textContent = `Learned route (${learned} moves)`;
   byId('shortcut-length').textContent = `Shortcut (${shortcut} moves)`;
