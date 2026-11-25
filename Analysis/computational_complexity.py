@@ -29,6 +29,7 @@ if str(ROOT) not in sys.path:
 
 from maze_pilot.maze import GOAL, START, Cell, Maze, build_template  # noqa: E402
 from maze_pilot.maze_trials import generate_blocks, generate_probes  # noqa: E402
+from maze_pilot.trial_config import PARTICIPANT_EXPORT_COUNT  # noqa: E402
 
 Action = tuple[int, int]
 
@@ -139,6 +140,11 @@ def final_attempts(
     return [by_index[index] for index in sorted(by_index)]
 
 
+def schedule_slot(participant_index: int) -> int:
+    """Map a raw Participant TSN to the embedded counterbalance slot."""
+    return participant_index % PARTICIPANT_EXPORT_COUNT
+
+
 def analyze_log(
     payload: Mapping[str, object],
     *,
@@ -150,7 +156,8 @@ def analyze_log(
         payload.get("participantIndex") or payload.get("participant_index") or 0
     )
     phase = str(payload.get("phase") or "test")
-    mazes = trial_schedule(seed, participant_index, phase)
+    # Live intake stores raw TSN but plays schedule TSN % N.
+    mazes = trial_schedule(seed, schedule_slot(participant_index), phase)
     raw = [item for item in payload.get("trials", []) if isinstance(item, Mapping)]
     rows: list[dict[str, object]] = []
     for trial in final_attempts(raw):
@@ -309,16 +316,23 @@ def main() -> None:
 
     args.results_dir.mkdir(parents=True, exist_ok=True)
     args.media_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = args.results_dir / "computational-complexity-42-0.csv"
-    plot_path = args.media_dir / "computational-complexity-42-0.png"
+    seed = rows[0]["seed"]
+    participant = rows[0]["participant_index"]
+    stem = f"computational-complexity-{seed}-{participant}"
+    csv_path = args.results_dir / f"{stem}.csv"
+    plot_path = args.media_dir / f"{stem}.png"
     write_csv(rows, csv_path)
     plot_control_information(rows, plot_path)
+    # Keep a copy next to the results note for markdown embedding.
+    results_plot = args.results_dir / f"{stem}.png"
+    results_plot.write_bytes(plot_path.read_bytes())
 
     mean_bits = sum(float(row["control_information_bits"]) for row in rows) / len(rows)
     print(f"trials={len(rows)}")
     print(f"mean_control_information_bits={mean_bits:.3f}")
     print(csv_path)
     print(plot_path)
+    print(results_plot)
 
 
 if __name__ == "__main__":

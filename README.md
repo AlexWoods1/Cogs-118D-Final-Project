@@ -98,6 +98,26 @@ validates TSN/phase/size, and stores a whitelisted payload. Set
 `SESSIONS_ALLOWED_ORIGIN` if the production host differs from the Vercel default.
 Keep `SESSIONS_ADMIN_TOKEN` long and random; never commit `.env.local`.
 
+## Session data and analysis
+
+Export Neon rows to local JSON (gitignored under `Data/`):
+
+```sh
+node scripts/export-sessions.mjs          # completed sessions
+node scripts/export-sessions.mjs --all    # every row
+```
+
+Score control information, plot paths, and build the cohort summary:
+
+```sh
+uv run --with matplotlib python Analysis/computational_complexity.py --log Data/maze-pilot-log-42-<TSN>.json
+uv run --with matplotlib python Data/_plot_trials.py --log Data/maze-pilot-log-42-<TSN>.json
+uv run --with matplotlib python Analysis/pilot_cohort.py
+```
+
+Write-up and figures: [`Results/INITIAL_RESULTS.md`](Results/INITIAL_RESULTS.md).
+Cohort table: `Results/pilot-cohort-trials.csv`.
+
 ## Testing
 
 ```sh
