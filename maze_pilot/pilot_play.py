@@ -27,8 +27,6 @@ from .maze import (
 )
 from .maze_trials import (
     Phase,
-    Side,
-    Symbol,
     Trial,
     generate_blocks,
     generate_probes,
@@ -40,10 +38,23 @@ from .session_cli import (
     add_seed_participant_args,
     reject_negative_participant_index,
 )
+from .trial_config import (
+    DEADLINE_CALIBRATION_PERCENTILE,
+    DEADLINE_FLOOR_MS,
+    DEFAULT_DEADLINE_MS,
+    FADE_GUIDANCE_PREFIX_CELLS,
+    TRAINING_DETOUR,
+    TRAINING_GUIDANCES,
+    TRAINING_REFLECTIONS,
+    TRAINING_VARIANT,
+    Guidance,
+    Side,
+    Symbol,
+)
 
 type FirstChoice = Literal["learned", "shortcut", "other", "timeout"]
 type Continuation = Literal["learned", "alternate", "none"]
-type Guidance = Literal["full", "fade", "none"]
+type PlayGuidance = Literal["full", "fade", "none"]
 
 
 class PlayTrial(TypedDict):
@@ -54,7 +65,7 @@ class PlayTrial(TypedDict):
     landmark: str | None
     timed: bool
     deadline_ms: int | None
-    guidance: Guidance
+    guidance: PlayGuidance
     reflected: bool
     symbol: Symbol
     beacon: Edge | None
@@ -131,21 +142,21 @@ def beacon_visible(beacon: Edge | None, visible: frozenset[Cell]) -> bool:
     return first in visible or second in visible
 
 
-def guidance_cells(route: tuple[Cell, ...], guidance: Guidance) -> tuple[Cell, ...]:
+def guidance_cells(route: tuple[Cell, ...], guidance: PlayGuidance) -> tuple[Cell, ...]:
     """Return the learned-route prefix shown during training."""
     if guidance == "none":
         return ()
     if guidance == "fade":
         # Keep the first turn and the next corridor step, then withdraw the rest.
-        return route[:3]
+        return route[:FADE_GUIDANCE_PREFIX_CELLS]
     return route
 
 
 def calibrate_deadline_ms(
     response_times_ms: list[int],
     *,
-    percentile: float = 0.7,
-    floor_ms: int = 400,
+    percentile: float = DEADLINE_CALIBRATION_PERCENTILE,
+    floor_ms: int = DEADLINE_FLOOR_MS,
 ) -> int:
     """Pick a deadline below typical untimed RTs while keeping most responses."""
     if not response_times_ms:
@@ -354,7 +365,7 @@ def _play_trial(
     timed: bool,
     kind: str | None = None,
     landmark: str | None = None,
-    guidance: Guidance = "none",
+    guidance: PlayGuidance = "none",
     deadline_ms: int | None = None,
 ) -> PlayTrial:
     """Build one playable trial record in participant coordinates."""
@@ -384,7 +395,7 @@ def _training_trial(
     deadline_ms: int,
 ) -> PlayTrial:
     """Build one symbol-only training trial in a fixed layout orientation."""
-    maze = build_template(2, 0)
+    maze = build_template(TRAINING_DETOUR, TRAINING_VARIANT)
     if reflected:
         maze = maze.reflected()
     trial = Trial(maze, reflected, None, verify_maze(maze))
@@ -401,10 +412,9 @@ def _training_trial(
 def training_trials(*, deadline_ms: int) -> list[PlayTrial]:
     """Train both reflections with full guidance, then fade the path cue."""
     trials: list[PlayTrial] = []
-    guidances: tuple[Guidance, ...] = ("full", "fade")
-    for guidance in guidances:
+    for guidance in TRAINING_GUIDANCES:
         guidance_label = "full guidance" if guidance == "full" else "fading guidance"
-        for reflected in (False, True):
+        for reflected in TRAINING_REFLECTIONS:
             orientation = "reflected" if reflected else "original"
             trials.append(
                 _training_trial(
@@ -415,9 +425,6 @@ def training_trials(*, deadline_ms: int) -> list[PlayTrial]:
                 )
             )
     return trials
-
-
-DEFAULT_DEADLINE_MS = 800
 
 
 def play_session(

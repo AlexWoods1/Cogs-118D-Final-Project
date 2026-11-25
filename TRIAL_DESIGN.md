@@ -36,6 +36,10 @@ The **orientation symbol** is available in every condition.
 
 ## Schedules
 
+Numeric schedule knobs (deadline, trial counts, detours, calibration) live in
+[`maze_pilot/trial_config.py`](maze_pilot/trial_config.py). Edit that file to
+change pilot/test lengths or the default first-move deadline.
+
 ### Seed and participant index
 
 - Schedules are deterministic given `--seed` and zero-based `--participant-index`.

@@ -39,5 +39,6 @@ also_copy = [
     "maze_pilot/pilot_play.html",
     "maze_pilot/pilot_play.js",
     "maze_pilot/session_cli.py",
+    "maze_pilot/trial_config.py",
 ]
 

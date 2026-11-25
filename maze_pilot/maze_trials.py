@@ -21,22 +21,26 @@ from .session_cli import (
     add_seed_participant_args,
     reject_negative_participant_index,
 )
+from .trial_config import (
+    BLOCK_TRIALS_PER_SAVINGS,
+    DETOUR_LENGTHS,
+    LAYOUT_VARIANT_COUNT,
+    PROBE_DETOUR,
+    PROBE_KINDS,
+    PROBE_TRIALS_PER_ORIENTATION,
+    SIDES,
+    SYMBOLS,
+    ProbeKind,
+    Side,
+    Symbol,
+)
 
-type Side = Literal["left", "right"]
-type Symbol = Literal["circle", "diamond"]
 type Phase = Literal["test", "pilot"]
-type ProbeKind = Literal["symbol-only", "aligned", "conflicting"]
 
 BEACON_EDGES = {
     "left": edge_between((3, 1), (3, 2)),
     "right": edge_between((9, 1), (9, 2)),
 }
-SYMBOLS: dict[Side, Symbol] = {"left": "circle", "right": "diamond"}
-SIDES: tuple[Side, Side] = ("left", "right")
-PROBE_KINDS: tuple[ProbeKind, ...] = ("symbol-only", "aligned", "conflicting")
-# Replicates keep the factor balance while lengthening each session.
-BLOCK_TRIALS_PER_SAVINGS = 2
-PROBE_TRIALS_PER_ORIENTATION = 4
 
 
 @dataclass(frozen=True)
@@ -122,7 +126,7 @@ def _session_rng(seed: int, participant_index: int, phase: Phase) -> Random:
 
 def _block_trials(condition: Condition, variant: int, rng: Random) -> tuple[Trial, ...]:
     """Generate verified trials at each savings level for a block."""
-    detours = [1, 2, 3] * BLOCK_TRIALS_PER_SAVINGS
+    detours = list(DETOUR_LENGTHS) * BLOCK_TRIALS_PER_SAVINGS
     rng.shuffle(detours)
     trials = []
     for detour in detours:
@@ -172,7 +176,7 @@ def generate_probes(seed: int, participant_index: int) -> tuple[Probe, ...]:
         ] * PROBE_TRIALS_PER_ORIENTATION
         rng.shuffle(orientations)
         for index, reflected in enumerate(orientations):
-            maze = _trial_maze(2, index % 4, reflected)
+            maze = _trial_maze(PROBE_DETOUR, index % LAYOUT_VARIANT_COUNT, reflected)
             beacon_side = _probe_beacon_side(kind, _learned_side(maze))
             probes.append(
                 Probe(kind, Trial(maze, reflected, beacon_side, verify_maze(maze)))

@@ -1,9 +1,11 @@
-"""One-off plot of logged pilot paths (seed 42, participant 0)."""
+"""Plot logged pilot paths (seed 42, participant 0) into media/."""
 
 from __future__ import annotations
 
 import json
+import math
 import sys
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -12,33 +14,84 @@ ROOT = Path(__file__).resolve().parent
 PROJECT = ROOT.parent
 sys.path.insert(0, str(PROJECT))
 
-from maze_pilot.maze import HEIGHT, WIDTH  # noqa: E402
-from maze_pilot.maze_trials import generate_blocks  # noqa: E402
+from maze_pilot.maze import HEIGHT, WIDTH, Maze, build_template  # noqa: E402
+from maze_pilot.maze_trials import generate_blocks, generate_probes  # noqa: E402
 
-LOG = ROOT / "maze-pilot-log-42-0 (1).json"
+LOG = ROOT / "maze-pilot-log-42-0.json"
 OUT = PROJECT / "media" / "trial-paths-42-0.png"
+RESULTS_COPY = PROJECT / "Results" / "trial-paths-42-0.png"
 
 CHOICE_COLOR = {
     "shortcut": "#1f77b4",
     "learned": "#2ca02c",
     "other": "#d62728",
+    "timeout": "#7f7f7f",
     "none": "#7f7f7f",
 }
 
 
+def trial_schedule(seed: int, participant_index: int, phase: str) -> list[Maze]:
+    """Match playable export order for the logged phase."""
+    if phase == "pilot":
+        training: list[Maze] = []
+        for _guidance in ("full", "fade"):
+            for reflected in (False, True):
+                maze = build_template(2, 0)
+                training.append(maze.reflected() if reflected else maze)
+        return training + [
+            probe.trial.maze for probe in generate_probes(seed, participant_index)
+        ]
+    return [
+        trial.maze
+        for block in generate_blocks(seed, participant_index)
+        for trial in block.trials
+    ]
+
+
+def final_attempts(
+    trials: Sequence[Mapping[str, object]],
+) -> list[Mapping[str, object]]:
+    """Keep the last logged attempt for each trial index."""
+    by_index: dict[int, Mapping[str, object]] = {}
+    for trial in trials:
+        by_index[int(trial["trialIndex"])] = trial
+    return [by_index[index] for index in sorted(by_index)]
+
+
 def main() -> None:
     log = json.loads(LOG.read_text(encoding="utf-8"))
-    mazes = [trial.maze for block in generate_blocks(42, 0) for trial in block.trials]
-    trials = log["trials"]
-    if len(trials) != len(mazes):
-        raise SystemExit(
-            f"trial count mismatch: log={len(trials)} schedule={len(mazes)}"
-        )
+    phase = str(log.get("phase") or "test")
+    seed = int(log["seed"])
+    participant = int(log.get("participantIndex") or log.get("participant_index") or 0)
+    mazes = trial_schedule(seed, participant, phase)
+    trials = final_attempts(
+        [item for item in log["trials"] if isinstance(item, Mapping)]
+    )
+    scored = [
+        (trial, mazes[int(trial["trialIndex"])])
+        for trial in trials
+        if int(trial["trialIndex"]) < len(mazes)
+        and isinstance(trial.get("path"), Sequence)
+        and len(trial["path"]) >= 2
+    ]
+    if not scored:
+        raise SystemExit("No scored paths found in log")
 
-    fig, axes = plt.subplots(3, 4, figsize=(14, 10), constrained_layout=True)
-    fig.suptitle("Pilot session paths · seed 42 · participant 0", fontsize=14)
+    cols = 4
+    nrows = math.ceil(len(scored) / cols)
+    fig, axes = plt.subplots(
+        nrows, cols, figsize=(3.4 * cols, 2.6 * nrows), constrained_layout=True
+    )
+    flat = list(axes.ravel()) if hasattr(axes, "ravel") else [axes]
+    fig.suptitle(
+        f"{phase.capitalize()} session paths · seed {seed} · participant {participant}",
+        fontsize=14,
+    )
 
-    for ax, trial, maze in zip(axes.ravel(), trials, mazes, strict=True):
+    for ax in flat[len(scored) :]:
+        ax.set_visible(False)
+
+    for ax, (trial, maze) in zip(flat, scored, strict=False):
         for first, second in maze.open_edges:
             ax.plot(
                 [first[0], second[0]],
@@ -51,13 +104,13 @@ def main() -> None:
         path = trial["path"]
         xs = [point[0] for point in path]
         ys = [point[1] for point in path]
-        color = CHOICE_COLOR.get(trial.get("firstChoice") or "none", "#7f7f7f")
+        color = CHOICE_COLOR.get(str(trial.get("firstChoice") or "none"), "#7f7f7f")
         ax.plot(xs, ys, color=color, lw=2.2, zorder=3)
         ax.scatter([xs[0]], [ys[0]], c="#111111", s=28, zorder=4)
         ax.scatter([xs[-1]], [ys[-1]], c="#e67e22", s=36, marker="*", zorder=4)
-        short = (trial.get("label") or "").replace(" · ", "\n")
+        short = str(trial.get("label") or "").replace(" · ", "\n")
         ax.set_title(
-            f"T{trial['trialIndex'] + 1}: {trial.get('firstChoice')}\n{short}",
+            f"T{int(trial['trialIndex']) + 1}: {trial.get('firstChoice')}\n{short}",
             fontsize=7,
         )
         ax.set_xlim(-0.5, WIDTH - 0.5)
@@ -68,8 +121,12 @@ def main() -> None:
         for spine in ax.spines.values():
             spine.set_visible(False)
 
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    RESULTS_COPY.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(OUT, dpi=160)
+    fig.savefig(RESULTS_COPY, dpi=160)
     print(OUT)
+    print(RESULTS_COPY)
 
 
 if __name__ == "__main__":

@@ -9,7 +9,7 @@ trained learned route. For a single deterministic path this reduces to:
 with a smoothed default so off-route actions stay finite.
 
 Policy complexity I(S;A) (Lai & Gershman, 2024) needs many state-action
-samples per condition. A 12-trial pilot path log is too sparse for a stable
+samples per condition. A single pilot path log is too sparse for a stable
 Hutter MI estimate, so this script reports control information only.
 """
 
@@ -27,8 +27,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from maze_pilot.maze import GOAL, START, Cell, Maze  # noqa: E402
-from maze_pilot.maze_trials import generate_blocks  # noqa: E402
+from maze_pilot.maze import GOAL, START, Cell, Maze, build_template  # noqa: E402
+from maze_pilot.maze_trials import generate_blocks, generate_probes  # noqa: E402
 
 Action = tuple[int, int]
 
@@ -109,13 +109,34 @@ def path_control_information(
     }
 
 
-def trial_schedule(seed: int, participant_index: int) -> list[Maze]:
-    """Flatten generated test mazes into presentation order."""
+def trial_schedule(
+    seed: int, participant_index: int, phase: str = "test"
+) -> list[Maze]:
+    """Return mazes in the same order as the playable export for *phase*."""
+    if phase == "pilot":
+        training: list[Maze] = []
+        for _guidance in ("full", "fade"):
+            for reflected in (False, True):
+                maze = build_template(2, 0)
+                training.append(maze.reflected() if reflected else maze)
+        return training + [
+            probe.trial.maze for probe in generate_probes(seed, participant_index)
+        ]
     return [
         trial.maze
         for block in generate_blocks(seed, participant_index)
         for trial in block.trials
     ]
+
+
+def final_attempts(
+    trials: Sequence[Mapping[str, object]],
+) -> list[Mapping[str, object]]:
+    """Keep the last logged attempt for each trial index (restarts overwrite)."""
+    by_index: dict[int, Mapping[str, object]] = {}
+    for trial in trials:
+        by_index[int(trial["trialIndex"])] = trial
+    return [by_index[index] for index in sorted(by_index)]
 
 
 def analyze_log(
@@ -128,10 +149,11 @@ def analyze_log(
     participant_index = int(
         payload.get("participantIndex") or payload.get("participant_index") or 0
     )
-    mazes = trial_schedule(seed, participant_index)
-    trials = [item for item in payload.get("trials", []) if isinstance(item, Mapping)]
+    phase = str(payload.get("phase") or "test")
+    mazes = trial_schedule(seed, participant_index, phase)
+    raw = [item for item in payload.get("trials", []) if isinstance(item, Mapping)]
     rows: list[dict[str, object]] = []
-    for trial in trials:
+    for trial in final_attempts(raw):
         index = int(trial["trialIndex"])
         if index >= len(mazes):
             continue
@@ -143,8 +165,10 @@ def analyze_log(
             {
                 "seed": seed,
                 "participant_index": participant_index,
+                "phase": phase,
                 "trial_index": index,
                 "trial_number": index + 1,
+                "kind": trial.get("kind"),
                 "label": trial.get("label"),
                 "landmark": trial.get("landmark"),
                 "timed": bool(trial.get("timed")),
@@ -211,14 +235,32 @@ def plot_control_information(rows: Sequence[Mapping[str, object]], path: Path) -
     untimed_vals = [
         float(row["control_information_bits"]) for row in rows if not row["timed"]
     ]
-    ax2.boxplot(
-        [untimed_vals, timed_vals],
-        tick_labels=["Untimed", "Timed"],
-        patch_artist=True,
-        boxprops={"facecolor": "#dddddd"},
-    )
+    if timed_vals and untimed_vals:
+        ax2.boxplot(
+            [untimed_vals, timed_vals],
+            tick_labels=["Untimed", "Timed"],
+            patch_artist=True,
+            boxprops={"facecolor": "#dddddd"},
+        )
+        ax2.set_title("Timed vs untimed")
+    else:
+        # Playable exports currently time every first move; group by cue kind instead.
+        groups: dict[str, list[float]] = {}
+        for row in rows:
+            key = str(row.get("kind") or row.get("landmark") or "trial")
+            groups.setdefault(key, []).append(float(row["control_information_bits"]))
+        labels = sorted(groups)
+        ax2.boxplot(
+            [groups[label] for label in labels],
+            tick_labels=labels,
+            patch_artist=True,
+            boxprops={"facecolor": "#dddddd"},
+        )
+        ax2.tick_params(axis="x", rotation=20)
+        ax2.set_title(
+            "By cue kind" if any(row.get("kind") for row in rows) else "By group"
+        )
     ax2.set_ylabel("Control information (bits)")
-    ax2.set_title("Timed vs untimed")
     fig.suptitle(
         f"InfoRL control information · seed {rows[0]['seed']} · "
         f"participant {rows[0]['participant_index']}",
@@ -235,7 +277,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--log",
         type=Path,
-        default=ROOT / "Data" / "maze-pilot-log-42-0 (1).json",
+        default=ROOT / "Data" / "maze-pilot-log-42-0.json",
     )
     parser.add_argument(
         "--results-dir",

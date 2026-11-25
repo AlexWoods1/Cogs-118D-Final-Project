@@ -1,276 +1,475 @@
 seed,participant_index,phase,trial_index,trial_attempt,label,kind,landmark,timed,guidance,move_index,event,t_ms,from_x,from_y,to_x,to_y,dx,dy,legal,first_choice,later_continuation,beacon_visible_at_junction,reached_goal
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,1,move,783,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,2,move,1286,6,3,6,4,0,1,true,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,3,move,1316,6,4,6,5,0,1,true,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,4,move,1346,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,5,move,1376,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,6,move,1407,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,7,move,1437,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,8,move,1467,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,9,move,1497,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,10,move,1527,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,11,move,1560,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,12,move,1588,6,5,6,6,0,1,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,13,move,1728,6,5,7,5,1,0,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,14,move,1939,6,5,7,5,1,0,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,15,move,2020,6,5,5,5,-1,0,true,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,16,move,2206,5,5,4,5,-1,0,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,17,move,2342,5,5,5,6,0,1,true,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,18,move,2594,5,6,6,6,1,0,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,19,move,2800,5,6,6,6,1,0,false,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,20,move,2895,5,6,5,7,0,1,true,,,,false
-42,0,test,0,1,"Block 1, trial 1 · informative beacon · untimed",,informative,false,none,21,move,3182,5,7,6,7,1,0,true,,,,true
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,1,move,533,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,2,move,554,6,3,7,3,1,0,false,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,3,move,759,6,3,7,3,1,0,false,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,4,move,1021,6,3,6,2,0,-1,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,5,move,1181,6,2,7,2,1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,6,move,1363,7,2,8,2,1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,7,move,1508,8,2,9,2,1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,8,move,1816,9,2,9,3,0,1,false,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,9,move,2027,9,2,10,2,1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,10,move,2203,10,2,10,3,0,1,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,11,move,2384,10,3,10,4,0,1,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,12,move,2530,10,4,10,5,0,1,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,13,move,2686,10,5,10,6,0,1,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,14,move,2826,10,6,10,7,0,1,true,,alternate,true,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,15,move,2946,10,7,9,7,-1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,16,move,3129,9,7,8,7,-1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,17,move,3285,8,7,7,7,-1,0,true,,,,false
-42,0,test,1,2,"Block 1, trial 2 · informative beacon · untimed",,informative,false,none,18,move,3455,7,7,6,7,-1,0,true,,,,true
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,1,move,373,6,2,5,2,-1,0,true,learned,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,2,move,876,5,2,4,2,-1,0,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,3,move,914,4,2,3,2,-1,0,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,4,move,943,3,2,2,2,-1,0,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,5,move,967,2,2,1,2,-1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,6,move,996,2,2,1,2,-1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,7,move,1026,2,2,1,2,-1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,8,move,1057,2,2,1,2,-1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,9,move,1087,2,2,1,2,-1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,10,move,1691,2,2,2,3,0,1,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,11,move,1867,2,3,2,4,0,1,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,12,move,2028,2,4,2,5,0,1,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,13,move,2198,2,5,3,5,1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,14,move,2389,2,5,3,5,1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,15,move,2540,2,5,3,5,1,0,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,16,move,2586,2,5,2,6,0,1,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,17,move,2874,2,6,3,6,1,0,true,,learned,true,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,18,move,3084,3,6,3,7,0,1,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,19,move,3406,3,7,4,7,1,0,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,20,move,3587,4,7,4,8,0,1,false,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,21,move,3921,4,7,5,7,1,0,true,,,,false
-42,0,test,2,3,"Block 1, trial 3 · informative beacon · untimed",,informative,false,none,22,move,4107,5,7,6,7,1,0,true,,,,true
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,1,move,416,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,2,move,662,6,3,5,3,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,3,move,707,6,3,6,2,0,-1,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,4,move,902,6,2,6,1,0,-1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,5,move,1116,6,2,5,2,-1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,6,move,1618,5,2,4,2,-1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,7,move,1647,4,2,3,2,-1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,8,move,1677,3,2,2,2,-1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,9,move,1708,2,2,1,2,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,10,move,1738,2,2,1,2,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,11,move,1768,2,2,1,2,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,12,move,1798,2,2,1,2,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,13,move,1829,2,2,1,2,-1,0,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,14,move,1889,2,2,2,3,0,1,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,15,move,2392,2,3,2,4,0,1,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,16,move,2422,2,4,2,5,0,1,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,17,move,2453,2,5,2,6,0,1,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,18,move,2483,2,6,2,7,0,1,true,,alternate,true,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,19,move,2513,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,20,move,2543,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,21,move,2573,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,22,move,2603,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,23,move,2634,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,24,move,2664,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,25,move,2694,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,26,move,2724,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,27,move,2755,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,28,move,2785,2,7,2,8,0,1,false,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,29,move,2804,2,7,3,7,1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,30,move,3303,3,7,4,7,1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,31,move,3335,4,7,5,7,1,0,true,,,,false
-42,0,test,3,4,"Block 2, trial 1 · informative beacon · timed",,informative,true,none,32,move,3363,5,7,6,7,1,0,true,,,,true
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,1,move,307,6,2,5,2,-1,0,true,learned,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,2,move,811,5,2,4,2,-1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,3,move,841,4,2,3,2,-1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,4,move,871,3,2,2,2,-1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,5,move,903,2,2,1,2,-1,0,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,6,move,1003,2,2,2,3,0,1,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,7,move,1248,2,3,2,4,0,1,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,8,move,1505,2,4,1,4,-1,0,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,9,move,1751,2,4,2,5,0,1,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,10,move,1972,2,5,1,5,-1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,11,move,2213,1,5,0,5,-1,0,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,12,move,2425,1,5,0,5,-1,0,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,13,move,2566,1,5,1,4,0,-1,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,14,move,2852,1,5,1,4,0,-1,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,15,move,2873,1,5,1,6,0,1,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,16,move,3260,1,5,2,5,1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,17,move,3526,2,5,2,6,0,1,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,18,move,3819,2,6,2,7,0,1,true,,alternate,true,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,19,move,3989,2,7,2,8,0,1,false,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,20,move,4091,2,7,3,7,1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,21,move,4277,3,7,4,7,1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,22,move,4442,4,7,5,7,1,0,true,,,,false
-42,0,test,4,5,"Block 2, trial 2 · informative beacon · timed",,informative,true,none,23,move,4588,5,7,6,7,1,0,true,,,,true
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,1,move,340,6,2,7,2,1,0,true,other,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,2,move,843,7,2,8,2,1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,3,move,873,8,2,9,2,1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,4,move,904,9,2,10,2,1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,5,move,933,10,2,11,2,1,0,false,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,6,move,1009,10,2,10,3,0,1,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,7,move,1511,10,3,10,4,0,1,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,8,move,1541,10,4,10,5,0,1,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,9,move,1572,10,5,10,6,0,1,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,10,move,1604,10,6,10,7,0,1,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,11,move,1632,10,7,10,8,0,1,false,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,12,move,1663,10,7,10,8,0,1,false,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,13,move,1693,10,7,10,8,0,1,false,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,14,move,1748,10,7,9,7,-1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,15,move,2241,9,7,8,7,-1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,16,move,2271,8,7,7,7,-1,0,true,,,,false
-42,0,test,5,6,"Block 2, trial 3 · informative beacon · timed",,informative,true,none,17,move,2302,7,7,6,7,-1,0,true,,,,true
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,1,move,398,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,2,move,901,6,3,6,4,0,1,true,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,3,move,930,6,4,6,5,0,1,true,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,4,move,960,6,5,6,6,0,1,true,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,5,move,990,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,6,move,1021,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,7,move,1051,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,8,move,1082,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,9,move,1113,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,10,move,1142,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,11,move,1173,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,12,move,1203,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,13,move,1233,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,14,move,1263,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,15,move,1293,6,6,6,7,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,16,move,1403,6,6,7,6,1,0,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,17,move,1650,6,6,5,6,-1,0,true,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,18,move,1881,5,6,5,7,0,1,true,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,19,move,2118,5,7,5,8,0,1,false,,,,false
-42,0,test,6,7,"Block 3, trial 1 · uninformative beacon · timed",,uninformative,true,none,20,move,2304,5,7,6,7,1,0,true,,,,true
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,1,move,314,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,2,move,817,6,3,6,4,0,1,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,3,move,848,6,4,6,5,0,1,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,4,move,878,6,5,6,6,0,1,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,5,move,908,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,6,move,939,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,7,move,968,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,8,move,998,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,9,move,1028,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,10,move,1058,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,11,move,1088,6,6,6,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,12,move,1144,6,6,5,6,-1,0,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,13,move,1435,5,6,5,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,14,move,1752,5,6,5,7,0,1,false,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,15,move,1939,5,6,4,6,-1,0,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,16,move,2184,4,6,4,7,0,1,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,17,move,2486,4,7,5,7,1,0,true,,,,false
-42,0,test,7,8,"Block 3, trial 2 · uninformative beacon · timed",,uninformative,true,none,18,move,2699,5,7,6,7,1,0,true,,,,true
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,1,move,681,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,2,move,1184,6,3,6,4,0,1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,3,move,1214,6,4,6,5,0,1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,4,move,1245,6,5,6,6,0,1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,5,move,1276,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,6,move,1307,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,7,move,1335,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,8,move,1366,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,9,move,1395,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,10,move,1426,6,6,6,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,11,move,1480,6,6,5,6,-1,0,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,12,move,1933,6,6,5,6,-1,0,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,13,move,2190,6,6,6,5,0,-1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,14,move,2331,6,5,7,5,1,0,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,15,move,2577,6,5,6,6,0,1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,16,move,2829,6,6,7,6,1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,17,move,3020,7,6,6,6,-1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,18,move,3322,6,6,5,6,-1,0,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,19,move,3508,6,6,7,6,1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,20,move,3764,7,6,8,6,1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,21,move,3869,8,6,8,5,0,-1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,22,move,4161,8,6,8,5,0,-1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,23,move,4196,8,6,8,7,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,24,move,4308,8,6,9,6,1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,25,move,4498,9,6,10,6,1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,26,move,4543,10,6,10,7,0,1,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,27,move,4785,10,7,10,8,0,1,false,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,28,move,4951,10,7,9,7,-1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,29,move,5157,9,7,8,7,-1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,30,move,5354,8,7,7,7,-1,0,true,,,,false
-42,0,test,8,9,"Block 3, trial 3 · uninformative beacon · timed",,uninformative,true,none,31,move,5525,7,7,6,7,-1,0,true,,,,true
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,1,move,492,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,2,move,829,6,3,6,2,0,-1,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,3,move,980,6,2,7,2,1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,4,move,1483,7,2,8,2,1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,5,move,1513,8,2,9,2,1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,6,move,1544,9,2,10,2,1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,7,move,1574,10,2,11,2,1,0,false,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,8,move,2131,10,2,10,3,0,1,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,9,move,2307,10,3,10,4,0,1,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,10,move,2458,10,4,10,5,0,1,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,11,move,2616,10,5,10,6,0,1,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,12,move,2770,10,6,10,7,0,1,true,,alternate,true,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,13,move,2901,10,7,9,7,-1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,14,move,3087,9,7,8,7,-1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,15,move,3253,8,7,7,7,-1,0,true,,,,false
-42,0,test,9,10,"Block 4, trial 1 · uninformative beacon · untimed",,uninformative,false,none,16,move,3423,7,7,6,7,-1,0,true,,,,true
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,1,move,324,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,2,move,498,6,3,6,4,0,1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,3,move,709,6,4,6,5,0,1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,4,move,856,6,5,6,6,0,1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,5,move,1011,6,6,6,7,0,1,false,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,6,move,1173,6,6,6,7,0,1,false,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,7,move,1479,6,6,7,6,1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,8,move,1775,7,6,6,6,-1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,9,move,1987,6,6,5,6,-1,0,false,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,10,move,2248,6,6,6,5,0,-1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,11,move,2600,6,5,7,5,1,0,false,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,12,move,2686,6,5,6,6,0,1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,13,move,2827,6,6,7,6,1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,14,move,3013,7,6,8,6,1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,15,move,3185,8,6,9,6,1,0,false,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,16,move,3460,8,6,8,7,0,1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,17,move,4652,8,7,9,7,1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,18,move,5182,9,7,10,7,1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,19,move,5422,10,7,10,6,0,-1,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,20,move,5759,10,6,10,7,0,1,true,,alternate,true,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,21,move,6006,10,7,9,7,-1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,22,move,6197,9,7,8,7,-1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,23,move,6378,8,7,7,7,-1,0,true,,,,false
-42,0,test,10,11,"Block 4, trial 2 · uninformative beacon · untimed",,uninformative,false,none,24,move,6558,7,7,6,7,-1,0,true,,,,true
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,1,move,499,6,2,6,3,0,1,true,shortcut,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,2,move,832,6,3,6,2,0,-1,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,3,move,1400,6,2,5,2,-1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,4,move,1902,5,2,4,2,-1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,5,move,1932,4,2,3,2,-1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,6,move,1963,3,2,2,2,-1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,7,move,1993,2,2,1,2,-1,0,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,8,move,2023,2,2,1,2,-1,0,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,9,move,2053,2,2,1,2,-1,0,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,10,move,2084,2,2,1,2,-1,0,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,11,move,2114,2,2,1,2,-1,0,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,12,move,2210,2,2,2,3,0,1,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,13,move,2712,2,3,2,4,0,1,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,14,move,2743,2,4,2,5,0,1,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,15,move,2772,2,5,2,6,0,1,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,16,move,2803,2,6,2,7,0,1,true,,alternate,true,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,17,move,2833,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,18,move,2863,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,19,move,2894,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,20,move,2924,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,21,move,2953,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,22,move,2985,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,23,move,3016,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,24,move,3046,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,25,move,3074,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,26,move,3104,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,27,move,3137,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,28,move,3165,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,29,move,3195,2,7,2,8,0,1,false,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,30,move,3261,2,7,3,7,1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,31,move,3763,3,7,4,7,1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,32,move,3794,4,7,5,7,1,0,true,,,,false
-42,0,test,11,12,"Block 4, trial 3 · uninformative beacon · untimed",,uninformative,false,none,33,move,3823,5,7,6,7,1,0,true,,,,true
+42,0,pilot,0,1,Train · full guidance · original,train,,true,full,1,timeout,807,6,2,,,,,false,timeout,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,1,move,459,6,2,7,2,1,0,true,learned,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,2,move,620,7,2,8,2,1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,3,move,792,8,2,9,2,1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,4,move,1079,9,2,10,2,1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,5,move,1209,10,2,11,2,1,0,false,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,6,move,1355,10,2,10,3,0,1,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,7,move,1641,10,3,10,4,0,1,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,8,move,1782,10,4,10,5,0,1,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,9,move,1953,10,5,10,6,0,1,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,10,move,2099,10,6,10,7,0,1,true,,alternate,false,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,11,move,2169,10,7,10,8,0,1,false,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,12,move,2296,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,13,move,2495,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,14,move,2659,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,0,2,Train · full guidance · original,train,,true,full,15,move,2827,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,1,move,542,6,2,7,2,1,0,true,other,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,2,move,758,7,2,8,2,1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,3,move,905,8,2,8,3,0,1,false,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,4,move,1153,8,2,8,3,0,1,false,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,5,move,1191,8,2,9,2,1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,6,move,1393,9,2,10,2,1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,7,move,1543,10,2,10,3,0,1,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,8,move,1740,10,3,10,4,0,1,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,9,move,1911,10,4,10,5,0,1,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,10,move,2071,10,5,10,6,0,1,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,11,move,2233,10,6,10,7,0,1,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,12,move,2353,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,13,move,2530,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,14,move,2714,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,1,3,Train · full guidance · reflected,train,,true,full,15,move,2875,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,1,move,589,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,2,move,790,6,3,6,4,0,1,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,3,move,951,6,4,6,5,0,1,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,4,move,1107,6,5,6,6,0,1,false,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,5,move,1264,6,5,6,6,0,1,false,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,6,move,1433,6,5,6,6,0,1,false,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,7,move,1508,6,5,5,5,-1,0,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,8,move,1690,5,5,5,6,0,1,false,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,9,move,2003,5,5,5,6,0,1,false,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,10,move,2097,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,11,move,2265,4,5,4,6,0,1,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,12,move,2480,4,6,4,7,0,1,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,13,move,2621,4,7,5,7,1,0,true,,,,false
+42,0,pilot,2,4,Train · fading guidance · original,train,,true,fade,14,move,2948,5,7,6,7,1,0,true,,,,true
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,1,move,513,6,2,5,2,-1,0,true,learned,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,2,move,704,5,2,4,2,-1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,3,move,855,4,2,3,2,-1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,4,move,1075,3,2,2,2,-1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,5,move,1136,2,2,2,3,0,1,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,6,move,1376,2,3,2,4,0,1,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,7,move,1542,2,4,2,5,0,1,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,8,move,1733,2,5,2,6,0,1,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,9,move,1914,2,6,2,7,0,1,true,,alternate,false,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,10,move,2073,2,7,3,7,1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,11,move,2569,3,7,4,7,1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,12,move,2740,4,7,5,7,1,0,true,,,,false
+42,0,pilot,3,5,Train · fading guidance · reflected,train,,true,fade,13,move,2922,5,7,6,7,1,0,true,,,,true
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,1,move,390,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,2,move,678,6,3,7,3,1,0,false,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,3,move,1055,6,3,6,4,0,1,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,4,move,1291,6,4,6,5,0,1,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,5,move,1481,6,5,6,6,0,1,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,6,move,1659,6,6,6,7,0,1,false,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,7,move,1834,6,6,5,6,-1,0,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,8,move,2049,5,6,4,6,-1,0,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,9,move,2161,4,6,4,7,0,1,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,10,move,2396,4,7,3,7,-1,0,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,11,move,2628,3,7,3,8,0,1,false,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,12,move,2894,3,7,4,7,1,0,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,13,move,3131,4,7,5,7,1,0,true,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,14,move,3287,5,7,5,8,0,1,false,,,,false
+42,0,pilot,4,6,Probe 1 · aligned,aligned,,true,none,15,move,3509,5,7,6,7,1,0,true,,,,true
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,1,move,617,6,2,5,2,-1,0,true,other,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,2,move,833,5,2,4,2,-1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,3,move,1009,4,2,3,2,-1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,4,move,1160,3,2,3,3,0,1,false,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,5,move,1498,3,2,2,2,-1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,6,move,1663,2,2,2,3,0,1,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,7,move,1894,2,3,2,4,0,1,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,8,move,2045,2,4,2,5,0,1,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,9,move,2281,2,5,2,6,0,1,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,10,move,2447,2,6,2,7,0,1,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,11,move,2613,2,7,3,7,1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,12,move,2835,3,7,4,7,1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,13,move,2995,4,7,5,7,1,0,true,,,,false
+42,0,pilot,5,7,Probe 2 · conflicting,conflicting,,true,none,14,move,3140,5,7,6,7,1,0,true,,,,true
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,1,move,139,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,2,move,352,6,3,7,3,1,0,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,3,move,667,6,3,6,2,0,-1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,4,move,853,6,2,7,2,1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,5,move,1024,7,2,8,2,1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,6,move,1211,8,2,9,2,1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,7,move,1392,9,2,10,2,1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,8,move,1508,10,2,10,3,0,1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,9,move,1999,10,3,10,4,0,1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,10,move,2029,10,4,10,5,0,1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,11,move,2059,10,5,10,6,0,1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,12,move,2090,10,6,10,7,0,1,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,13,move,2120,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,14,move,2151,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,15,move,2182,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,16,move,2211,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,17,move,2242,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,18,move,2270,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,19,move,2300,10,7,10,8,0,1,false,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,20,move,2320,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,21,move,2823,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,22,move,2855,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,6,8,Probe 3 · conflicting,conflicting,,true,none,23,move,2884,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,1,move,533,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,2,move,1034,6,3,6,4,0,1,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,3,move,1064,6,4,6,5,0,1,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,4,move,1095,6,5,6,6,0,1,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,5,move,1127,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,6,move,1156,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,7,move,1186,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,8,move,1217,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,9,move,1246,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,10,move,1278,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,11,move,1308,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,12,move,1338,6,6,6,7,0,1,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,13,move,1358,6,6,5,6,-1,0,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,14,move,1855,5,6,4,6,-1,0,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,15,move,1884,4,6,3,6,-1,0,false,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,16,move,1904,4,6,4,7,0,1,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,17,move,2101,4,7,5,7,1,0,true,,,,false
+42,0,pilot,7,9,Probe 4 · conflicting,conflicting,,true,none,18,move,2559,5,7,6,7,1,0,true,,,,true
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,1,move,470,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,2,move,752,6,3,6,4,0,1,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,3,move,928,6,4,6,5,0,1,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,4,move,1094,6,5,6,6,0,1,false,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,5,move,1285,6,5,6,6,0,1,false,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,6,move,1455,6,5,5,5,-1,0,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,7,move,1658,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,8,move,1758,4,5,4,6,0,1,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,9,move,2008,4,6,4,7,0,1,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,10,move,2074,4,7,5,7,1,0,true,,,,false
+42,0,pilot,8,10,Probe 5 · symbol-only,symbol-only,,true,none,11,move,2256,5,7,6,7,1,0,true,,,,true
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,1,move,185,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,2,move,341,6,3,6,4,0,1,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,3,move,547,6,4,6,5,0,1,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,4,move,748,6,5,6,6,0,1,false,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,5,move,773,6,5,7,5,1,0,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,6,move,914,7,5,8,5,1,0,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,7,move,1070,8,5,8,6,0,1,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,8,move,1291,8,6,8,7,0,1,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,9,move,1447,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,9,11,Probe 6 · conflicting,conflicting,,true,none,10,move,1638,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,1,move,186,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,2,move,377,6,3,6,4,0,1,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,3,move,533,6,4,6,5,0,1,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,4,move,669,6,5,5,5,-1,0,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,5,move,895,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,6,move,1097,4,5,4,6,0,1,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,7,move,1302,4,6,4,7,0,1,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,8,move,1468,4,7,5,7,1,0,true,,,,false
+42,0,pilot,10,12,Probe 7 · conflicting,conflicting,,true,none,9,move,1644,5,7,6,7,1,0,true,,,,true
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,1,move,192,6,2,7,2,1,0,true,other,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,2,move,373,7,2,8,2,1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,3,move,548,8,2,9,2,1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,4,move,716,9,2,10,2,1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,5,move,850,10,2,11,2,1,0,false,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,6,move,911,10,2,10,3,0,1,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,7,move,1152,10,3,10,4,0,1,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,8,move,1323,10,4,10,5,0,1,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,9,move,1484,10,5,10,6,0,1,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,10,move,1654,10,6,10,7,0,1,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,11,move,1810,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,12,move,1992,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,13,move,2172,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,11,13,Probe 8 · symbol-only,symbol-only,,true,none,14,move,2352,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,1,move,139,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,2,move,297,6,3,6,4,0,1,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,3,move,477,6,4,6,5,0,1,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,4,move,632,6,5,6,6,0,1,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,5,move,762,6,6,5,6,-1,0,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,6,move,929,5,6,5,7,0,1,false,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,7,move,1205,5,6,4,6,-1,0,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,8,move,1295,4,6,4,7,0,1,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,9,move,1578,4,7,5,7,1,0,true,,,,false
+42,0,pilot,12,14,Probe 9 · aligned,aligned,,true,none,10,move,1813,5,7,6,7,1,0,true,,,,true
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,1,move,347,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,2,move,517,6,3,6,4,0,1,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,3,move,693,6,4,6,5,0,1,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,4,move,880,6,5,6,6,0,1,false,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,5,move,1030,6,5,7,5,1,0,false,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,6,move,1231,6,5,6,6,0,1,false,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,7,move,1342,6,5,5,5,-1,0,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,8,move,1507,5,5,5,6,0,1,false,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,9,move,1687,5,5,5,6,0,1,false,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,10,move,1839,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,11,move,2045,4,5,4,6,0,1,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,12,move,2290,4,6,4,7,0,1,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,13,move,2479,4,7,5,7,1,0,true,,,,false
+42,0,pilot,13,15,Probe 10 · symbol-only,symbol-only,,true,none,14,move,2662,5,7,6,7,1,0,true,,,,true
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,1,move,412,6,2,7,2,1,0,true,other,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,2,move,598,7,2,8,2,1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,3,move,789,8,2,9,2,1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,4,move,955,9,2,10,2,1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,5,move,1100,10,2,10,3,0,1,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,6,move,1351,10,3,10,4,0,1,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,7,move,1527,10,4,10,5,0,1,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,8,move,1708,10,5,10,6,0,1,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,9,move,1863,10,6,10,7,0,1,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,10,move,2044,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,11,move,2240,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,12,move,2438,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,14,16,Probe 11 · aligned,aligned,,true,none,13,move,2634,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,1,move,543,6,2,7,2,1,0,true,learned,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,2,move,717,7,2,8,2,1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,3,move,900,8,2,9,2,1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,4,move,1186,9,2,10,2,1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,5,move,1340,10,2,10,3,0,1,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,6,move,1844,10,3,10,4,0,1,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,7,move,1874,10,4,10,5,0,1,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,8,move,1904,10,5,10,6,0,1,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,9,move,1935,10,6,10,7,0,1,true,,alternate,true,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,10,move,1966,10,7,10,8,0,1,false,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,11,move,1995,10,7,10,8,0,1,false,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,12,move,2026,10,7,10,8,0,1,false,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,13,move,2050,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,14,move,2553,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,15,move,2583,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,15,17,Probe 12 · aligned,aligned,,true,none,16,move,2613,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,1,move,462,6,2,7,2,1,0,true,other,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,2,move,965,7,2,8,2,1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,3,move,995,8,2,9,2,1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,4,move,1024,9,2,10,2,1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,5,move,1056,10,2,11,2,1,0,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,6,move,1086,10,2,11,2,1,0,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,7,move,1116,10,2,11,2,1,0,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,8,move,1146,10,2,11,2,1,0,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,9,move,1167,10,2,10,3,0,1,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,10,move,1663,10,3,10,4,0,1,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,11,move,1693,10,4,10,5,0,1,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,12,move,1723,10,5,10,6,0,1,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,13,move,1754,10,6,10,7,0,1,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,14,move,1785,10,7,10,8,0,1,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,15,move,1816,10,7,10,8,0,1,false,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,16,move,1836,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,17,move,2528,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,18,move,3031,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,16,18,Probe 13 · conflicting,conflicting,,true,none,19,move,3061,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,1,move,261,6,2,7,2,1,0,true,learned,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,2,move,737,7,2,6,2,-1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,3,move,965,6,2,6,3,0,1,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,4,move,1468,6,3,6,4,0,1,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,5,move,1499,6,4,6,5,0,1,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,6,move,1528,6,5,6,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,7,move,1559,6,5,6,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,8,move,1588,6,5,6,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,9,move,1619,6,5,6,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,10,move,1648,6,5,6,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,11,move,1674,6,5,5,5,-1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,12,move,2177,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,13,move,2207,4,5,3,5,-1,0,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,14,move,2237,4,5,3,5,-1,0,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,15,move,2327,4,5,5,5,1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,16,move,2373,5,5,5,6,0,1,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,17,move,2820,5,5,4,5,-1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,18,move,3016,4,5,3,5,-1,0,false,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,19,move,3157,4,5,4,6,0,1,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,20,move,3397,4,6,4,7,0,1,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,21,move,3654,4,7,5,7,1,0,true,,,,false
+42,0,pilot,17,19,Probe 14 · symbol-only,symbol-only,,true,none,22,move,3825,5,7,6,7,1,0,true,,,,true
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,1,move,421,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,2,move,669,6,3,6,4,0,1,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,3,move,838,6,4,6,5,0,1,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,4,move,1024,6,5,5,5,-1,0,false,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,5,move,1433,6,5,5,5,-1,0,false,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,6,move,1654,6,5,7,5,1,0,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,7,move,1980,7,5,8,5,1,0,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,8,move,2181,8,5,8,6,0,1,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,9,move,2401,8,6,8,7,0,1,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,10,move,2588,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,18,20,Probe 15 · conflicting,conflicting,,true,none,11,move,2790,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,1,move,572,6,2,7,2,1,0,true,learned,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,2,move,663,7,2,8,2,1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,3,move,1161,8,2,9,2,1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,4,move,1190,9,2,10,2,1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,5,move,1222,10,2,11,2,1,0,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,6,move,1270,10,2,10,3,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,7,move,1762,10,3,10,4,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,8,move,1792,10,4,10,5,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,9,move,1822,10,5,10,6,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,10,move,1853,10,6,10,7,0,1,true,,alternate,false,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,11,move,1883,10,7,10,8,0,1,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,12,move,1913,10,7,10,8,0,1,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,13,move,1943,10,7,10,8,0,1,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,14,move,1974,10,7,10,8,0,1,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,15,move,2004,10,7,10,8,0,1,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,16,move,2873,10,7,10,6,0,-1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,17,move,3265,10,6,10,7,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,18,move,3416,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,19,move,3637,9,7,9,6,0,-1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,20,move,3773,9,6,8,6,-1,0,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,21,move,3989,9,6,8,6,-1,0,false,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,22,move,4119,9,6,9,7,0,1,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,23,move,4345,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,24,move,4551,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,19,21,Probe 16 · symbol-only,symbol-only,,true,none,25,move,4747,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,1,move,366,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,2,move,617,6,3,5,3,-1,0,false,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,3,move,841,6,3,5,3,-1,0,false,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,4,move,1187,6,3,6,2,0,-1,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,5,move,1332,6,2,5,2,-1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,6,move,1517,5,2,4,2,-1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,7,move,1683,4,2,3,2,-1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,8,move,1889,3,2,2,2,-1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,9,move,1950,2,2,2,3,0,1,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,10,move,2176,2,3,2,4,0,1,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,11,move,2336,2,4,2,5,0,1,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,12,move,2527,2,5,2,6,0,1,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,13,move,2699,2,6,2,7,0,1,true,,alternate,true,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,14,move,2911,2,7,2,8,0,1,false,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,15,move,3126,2,7,3,7,1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,16,move,3353,3,7,4,7,1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,17,move,3508,4,7,5,7,1,0,true,,,,false
+42,0,pilot,20,22,Probe 17 · aligned,aligned,,true,none,18,move,3669,5,7,6,7,1,0,true,,,,true
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,1,move,430,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,2,move,934,6,3,6,4,0,1,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,3,move,963,6,4,6,5,0,1,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,4,move,994,6,5,6,6,0,1,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,5,move,1024,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,6,move,1054,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,7,move,1085,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,8,move,1116,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,9,move,1145,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,10,move,1176,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,11,move,1206,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,12,move,1236,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,13,move,1264,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,14,move,1295,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,15,move,1325,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,16,move,1356,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,17,move,1386,6,6,6,7,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,18,move,1411,6,6,5,6,-1,0,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,19,move,1592,6,6,5,6,-1,0,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,20,move,1939,6,6,7,6,1,0,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,21,move,2264,7,6,8,6,1,0,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,22,move,2502,8,6,8,7,0,1,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,23,move,2752,8,7,8,8,0,1,false,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,24,move,2907,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,21,23,Probe 18 · symbol-only,symbol-only,,true,none,25,move,3104,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,1,move,572,6,2,5,2,-1,0,true,other,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,2,move,1074,5,2,4,2,-1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,3,move,1103,4,2,3,2,-1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,4,move,1134,3,2,2,2,-1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,5,move,1164,2,2,1,2,-1,0,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,6,move,1194,2,2,1,2,-1,0,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,7,move,1246,2,2,2,3,0,1,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,8,move,1734,2,3,2,4,0,1,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,9,move,1763,2,4,2,5,0,1,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,10,move,1795,2,5,2,6,0,1,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,11,move,1824,2,6,2,7,0,1,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,12,move,1854,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,13,move,1884,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,14,move,1914,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,15,move,1943,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,16,move,1974,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,17,move,2005,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,18,move,2035,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,19,move,2065,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,20,move,2095,2,7,2,8,0,1,false,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,21,move,2115,2,7,3,7,1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,22,move,2613,3,7,4,7,1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,23,move,2643,4,7,5,7,1,0,true,,,,false
+42,0,pilot,22,24,Probe 19 · conflicting,conflicting,,true,none,24,move,2673,5,7,6,7,1,0,true,,,,true
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,1,move,421,6,2,7,2,1,0,true,other,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,2,move,924,7,2,8,2,1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,3,move,955,8,2,9,2,1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,4,move,986,9,2,10,2,1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,5,move,1015,10,2,11,2,1,0,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,6,move,1045,10,2,11,2,1,0,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,7,move,1075,10,2,11,2,1,0,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,8,move,1101,10,2,10,3,0,1,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,9,move,1613,10,3,10,4,0,1,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,10,move,1643,10,4,10,5,0,1,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,11,move,1673,10,5,10,6,0,1,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,12,move,1704,10,6,10,7,0,1,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,13,move,1733,10,7,10,8,0,1,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,14,move,1764,10,7,10,8,0,1,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,15,move,1794,10,7,10,8,0,1,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,16,move,1824,10,7,10,8,0,1,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,17,move,1855,10,7,10,8,0,1,false,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,18,move,1880,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,19,move,2382,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,20,move,2412,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,23,25,Probe 20 · symbol-only,symbol-only,,true,none,21,move,2442,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,1,move,526,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,2,move,1030,6,3,6,4,0,1,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,3,move,1059,6,4,6,5,0,1,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,4,move,1090,6,5,6,6,0,1,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,5,move,1120,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,6,move,1150,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,7,move,1180,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,8,move,1209,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,9,move,1240,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,10,move,1271,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,11,move,1301,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,12,move,1332,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,13,move,1362,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,14,move,1391,6,6,6,7,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,15,move,1441,6,6,5,6,-1,0,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,16,move,1772,6,6,7,6,1,0,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,17,move,1974,7,6,8,6,1,0,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,18,move,2150,8,6,9,6,1,0,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,19,move,2306,8,6,8,7,0,1,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,20,move,2563,8,7,8,8,0,1,false,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,21,move,2732,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,24,26,Probe 21 · symbol-only,symbol-only,,true,none,22,move,2924,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,1,move,406,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,2,move,606,6,3,5,3,-1,0,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,3,move,795,6,3,6,2,0,-1,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,4,move,994,6,2,5,2,-1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,5,move,1496,5,2,4,2,-1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,6,move,1528,4,2,3,2,-1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,7,move,1551,3,2,3,3,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,8,move,1974,3,2,2,2,-1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,9,move,2126,2,2,2,3,0,1,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,10,move,2627,2,3,2,4,0,1,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,11,move,2657,2,4,2,5,0,1,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,12,move,2688,2,5,2,6,0,1,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,13,move,2718,2,6,2,7,0,1,true,,alternate,true,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,14,move,2748,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,15,move,2779,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,16,move,2809,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,17,move,2839,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,18,move,2869,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,19,move,2899,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,20,move,2930,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,21,move,2959,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,22,move,2990,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,23,move,3020,2,7,2,8,0,1,false,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,24,move,3040,2,7,3,7,1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,25,move,3544,3,7,4,7,1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,26,move,3573,4,7,5,7,1,0,true,,,,false
+42,0,pilot,25,27,Probe 22 · aligned,aligned,,true,none,27,move,3603,5,7,6,7,1,0,true,,,,true
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,1,move,482,6,2,7,2,1,0,true,learned,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,2,move,984,7,2,8,2,1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,3,move,1015,8,2,9,2,1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,4,move,1045,9,2,10,2,1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,5,move,1075,10,2,11,2,1,0,false,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,6,move,1104,10,2,11,2,1,0,false,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,7,move,1136,10,2,11,2,1,0,false,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,8,move,1185,10,2,10,3,0,1,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,9,move,1678,10,3,10,4,0,1,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,10,move,1708,10,4,10,5,0,1,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,11,move,1738,10,5,10,6,0,1,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,12,move,1769,10,6,10,7,0,1,true,,alternate,true,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,13,move,1799,10,7,10,8,0,1,false,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,14,move,1829,10,7,10,8,0,1,false,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,15,move,1965,10,7,9,7,-1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,16,move,2467,9,7,8,7,-1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,17,move,2498,8,7,7,7,-1,0,true,,,,false
+42,0,pilot,26,28,Probe 23 · aligned,aligned,,true,none,18,move,2530,7,7,6,7,-1,0,true,,,,true
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,1,move,574,6,2,6,3,0,1,true,shortcut,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,2,move,1076,6,3,6,4,0,1,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,3,move,1107,6,4,6,5,0,1,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,4,move,1136,6,5,6,6,0,1,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,5,move,1167,6,6,6,7,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,6,move,1197,6,6,6,7,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,7,move,1228,6,6,6,7,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,8,move,1258,6,6,6,7,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,9,move,1288,6,6,6,7,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,10,move,1308,6,6,5,6,-1,0,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,11,move,1508,5,6,4,6,-1,0,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,12,move,1710,4,6,3,6,-1,0,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,13,move,1890,4,6,3,6,-1,0,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,14,move,2021,4,6,4,7,0,1,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,15,move,2237,4,7,4,8,0,1,false,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,16,move,2393,4,7,5,7,1,0,true,,,,false
+42,0,pilot,27,29,Probe 24 · aligned,aligned,,true,none,17,move,2594,5,7,6,7,1,0,true,,,,true
