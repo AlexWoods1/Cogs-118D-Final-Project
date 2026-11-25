@@ -1,7 +1,8 @@
-"""Plot logged pilot paths (seed 42, participant 0) into media/."""
+"""Plot logged pilot paths into media/ and Results/."""
 
 from __future__ import annotations
 
+import argparse
 import json
 import math
 import sys
@@ -16,10 +17,7 @@ sys.path.insert(0, str(PROJECT))
 
 from maze_pilot.maze import HEIGHT, WIDTH, Maze, build_template  # noqa: E402
 from maze_pilot.maze_trials import generate_blocks, generate_probes  # noqa: E402
-
-LOG = ROOT / "maze-pilot-log-42-0.json"
-OUT = PROJECT / "media" / "trial-paths-42-0.png"
-RESULTS_COPY = PROJECT / "Results" / "trial-paths-42-0.png"
+from maze_pilot.trial_config import PARTICIPANT_EXPORT_COUNT  # noqa: E402
 
 CHOICE_COLOR = {
     "shortcut": "#1f77b4",
@@ -32,19 +30,16 @@ CHOICE_COLOR = {
 
 def trial_schedule(seed: int, participant_index: int, phase: str) -> list[Maze]:
     """Match playable export order for the logged phase."""
+    slot = participant_index % PARTICIPANT_EXPORT_COUNT
     if phase == "pilot":
         training: list[Maze] = []
         for _guidance in ("full", "fade"):
             for reflected in (False, True):
                 maze = build_template(2, 0)
                 training.append(maze.reflected() if reflected else maze)
-        return training + [
-            probe.trial.maze for probe in generate_probes(seed, participant_index)
-        ]
+        return training + [probe.trial.maze for probe in generate_probes(seed, slot)]
     return [
-        trial.maze
-        for block in generate_blocks(seed, participant_index)
-        for trial in block.trials
+        trial.maze for block in generate_blocks(seed, slot) for trial in block.trials
     ]
 
 
@@ -58,8 +53,9 @@ def final_attempts(
     return [by_index[index] for index in sorted(by_index)]
 
 
-def main() -> None:
-    log = json.loads(LOG.read_text(encoding="utf-8"))
+def plot_log(log_path: Path, media_dir: Path, results_dir: Path) -> tuple[Path, Path]:
+    """Render one session path grid; return media and Results PNG paths."""
+    log = json.loads(log_path.read_text(encoding="utf-8"))
     phase = str(log.get("phase") or "test")
     seed = int(log["seed"])
     participant = int(log.get("participantIndex") or log.get("participant_index") or 0)
@@ -75,7 +71,7 @@ def main() -> None:
         and len(trial["path"]) >= 2
     ]
     if not scored:
-        raise SystemExit("No scored paths found in log")
+        raise SystemExit(f"No scored paths found in {log_path}")
 
     cols = 4
     nrows = math.ceil(len(scored) / cols)
@@ -121,12 +117,30 @@ def main() -> None:
         for spine in ax.spines.values():
             spine.set_visible(False)
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    RESULTS_COPY.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT, dpi=160)
-    fig.savefig(RESULTS_COPY, dpi=160)
-    print(OUT)
-    print(RESULTS_COPY)
+    stem = f"trial-paths-{seed}-{participant}.png"
+    media_dir.mkdir(parents=True, exist_ok=True)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    out = media_dir / stem
+    results_copy = results_dir / stem
+    fig.savefig(out, dpi=160)
+    fig.savefig(results_copy, dpi=160)
+    plt.close(fig)
+    return out, results_copy
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Plot maze paths from a pilot log.")
+    parser.add_argument(
+        "--log",
+        type=Path,
+        default=ROOT / "maze-pilot-log-42-0.json",
+    )
+    parser.add_argument("--media-dir", type=Path, default=PROJECT / "media")
+    parser.add_argument("--results-dir", type=Path, default=PROJECT / "Results")
+    args = parser.parse_args()
+    out, results_copy = plot_log(args.log, args.media_dir, args.results_dir)
+    print(out)
+    print(results_copy)
 
 
 if __name__ == "__main__":

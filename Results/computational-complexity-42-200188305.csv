@@ -1,0 +1,28 @@
+seed,participant_index,phase,trial_index,trial_number,kind,label,landmark,timed,first_choice,first_choice_rt_ms,later_continuation,reached_goal,start,goal,steps,control_information_bits,default_follow_rate
+42,200188305,pilot,1,2,train,Train · full guidance · reflected,,True,learned,765,alternate,True,"[6, 2]","[6, 7]",47,76.9339148584821,0.425531914893617
+42,200188305,pilot,2,3,train,Train · fading guidance · original,,True,learned,559,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,3,4,train,Train · fading guidance · reflected,,True,other,333,learned,True,"[6, 2]","[6, 7]",17,9.297968309673008,0.8823529411764706
+42,200188305,pilot,4,5,symbol-only,Probe 1 · symbol-only,,True,shortcut,571,alternate,True,"[6, 2]","[6, 7]",19,16.31589021767027,0.7368421052631579
+42,200188305,pilot,5,6,symbol-only,Probe 2 · symbol-only,,True,learned,523,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,6,7,conflicting,Probe 3 · conflicting,,True,learned,263,none,True,"[6, 2]","[6, 7]",15,20.96578428466209,0.3333333333333333
+42,200188305,pilot,7,8,aligned,Probe 4 · aligned,,True,learned,175,none,True,"[6, 2]","[6, 7]",15,21.550746785383247,0.3333333333333333
+42,200188305,pilot,8,9,conflicting,Probe 5 · conflicting,,True,learned,309,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,9,10,symbol-only,Probe 6 · symbol-only,,True,other,249,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,200188305,pilot,10,11,symbol-only,Probe 7 · symbol-only,,True,other,250,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,200188305,pilot,11,12,conflicting,Probe 8 · conflicting,,True,other,373,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,200188305,pilot,12,13,symbol-only,Probe 9 · symbol-only,,True,learned,309,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,13,14,symbol-only,Probe 10 · symbol-only,,True,learned,329,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,14,15,conflicting,Probe 11 · conflicting,,True,learned,233,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,15,16,aligned,Probe 12 · aligned,,True,other,232,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,200188305,pilot,16,17,conflicting,Probe 13 · conflicting,,True,other,159,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077
+42,200188305,pilot,17,18,symbol-only,Probe 14 · symbol-only,,True,other,175,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077
+42,200188305,pilot,18,19,conflicting,Probe 15 · conflicting,,True,learned,271,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,19,20,aligned,Probe 16 · aligned,,True,learned,81,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,20,21,aligned,Probe 17 · aligned,,True,learned,134,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,21,22,symbol-only,Probe 18 · symbol-only,,True,other,196,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,200188305,pilot,22,23,aligned,Probe 19 · aligned,,True,other,138,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077
+42,200188305,pilot,23,24,aligned,Probe 20 · aligned,,True,learned,171,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,24,25,conflicting,Probe 21 · conflicting,,True,other,69,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,200188305,pilot,25,26,conflicting,Probe 22 · conflicting,,True,learned,495,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,26,27,aligned,Probe 23 · aligned,,True,learned,500,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231
+42,200188305,pilot,27,28,aligned,Probe 24 · aligned,,True,other,67,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077

@@ -1,0 +1,74 @@
+seed,participant_index,phase,trial_index,trial_number,kind,label,landmark,timed,first_choice,first_choice_rt_ms,later_continuation,reached_goal,start,goal,steps,control_information_bits,default_follow_rate,source
+42,200188305,pilot,1,2,train,Train · full guidance · reflected,,True,learned,765,alternate,True,"[6, 2]","[6, 7]",47,76.9339148584821,0.425531914893617,maze-pilot-log-42-200188305.json
+42,200188305,pilot,2,3,train,Train · fading guidance · original,,True,learned,559,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,3,4,train,Train · fading guidance · reflected,,True,other,333,learned,True,"[6, 2]","[6, 7]",17,9.297968309673008,0.8823529411764706,maze-pilot-log-42-200188305.json
+42,200188305,pilot,4,5,symbol-only,Probe 1 · symbol-only,,True,shortcut,571,alternate,True,"[6, 2]","[6, 7]",19,16.31589021767027,0.7368421052631579,maze-pilot-log-42-200188305.json
+42,200188305,pilot,5,6,symbol-only,Probe 2 · symbol-only,,True,learned,523,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,6,7,conflicting,Probe 3 · conflicting,,True,learned,263,none,True,"[6, 2]","[6, 7]",15,20.96578428466209,0.3333333333333333,maze-pilot-log-42-200188305.json
+42,200188305,pilot,7,8,aligned,Probe 4 · aligned,,True,learned,175,none,True,"[6, 2]","[6, 7]",15,21.550746785383247,0.3333333333333333,maze-pilot-log-42-200188305.json
+42,200188305,pilot,8,9,conflicting,Probe 5 · conflicting,,True,learned,309,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,9,10,symbol-only,Probe 6 · symbol-only,,True,other,249,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,10,11,symbol-only,Probe 7 · symbol-only,,True,other,250,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,11,12,conflicting,Probe 8 · conflicting,,True,other,373,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,12,13,symbol-only,Probe 9 · symbol-only,,True,learned,309,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,13,14,symbol-only,Probe 10 · symbol-only,,True,learned,329,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,14,15,conflicting,Probe 11 · conflicting,,True,learned,233,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,15,16,aligned,Probe 12 · aligned,,True,other,232,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,16,17,conflicting,Probe 13 · conflicting,,True,other,159,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,17,18,symbol-only,Probe 14 · symbol-only,,True,other,175,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,18,19,conflicting,Probe 15 · conflicting,,True,learned,271,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,19,20,aligned,Probe 16 · aligned,,True,learned,81,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,20,21,aligned,Probe 17 · aligned,,True,learned,134,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,21,22,symbol-only,Probe 18 · symbol-only,,True,other,196,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,22,23,aligned,Probe 19 · aligned,,True,other,138,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,23,24,aligned,Probe 20 · aligned,,True,learned,171,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,24,25,conflicting,Probe 21 · conflicting,,True,other,69,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200188305,pilot,25,26,conflicting,Probe 22 · conflicting,,True,learned,495,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,26,27,aligned,Probe 23 · aligned,,True,learned,500,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200188305.json
+42,200188305,pilot,27,28,aligned,Probe 24 · aligned,,True,other,67,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200188305.json
+42,200153616,pilot,1,2,train,Train · full guidance · reflected,,True,learned,734,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,3,4,train,Train · fading guidance · reflected,,True,learned,445,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,4,5,aligned,Probe 1 · aligned,,True,shortcut,347,alternate,True,"[6, 2]","[6, 7]",21,18.31589021767027,0.7142857142857143,maze-pilot-log-42-200153616.json
+42,200153616,pilot,6,7,conflicting,Probe 3 · conflicting,,True,other,190,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077,maze-pilot-log-42-200153616.json
+42,200153616,pilot,7,8,conflicting,Probe 4 · conflicting,,True,shortcut,596,none,True,"[6, 2]","[6, 7]",25,33.983706192659355,0.4,maze-pilot-log-42-200153616.json
+42,200153616,pilot,9,10,conflicting,Probe 6 · conflicting,,True,learned,197,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,11,12,symbol-only,Probe 8 · symbol-only,,True,learned,181,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,12,13,aligned,Probe 9 · aligned,,True,shortcut,607,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.4444444444444444,maze-pilot-log-42-200153616.json
+42,200153616,pilot,13,14,symbol-only,Probe 10 · symbol-only,,True,learned,378,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,15,16,aligned,Probe 12 · aligned,,True,other,266,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200153616.json
+42,200153616,pilot,17,18,symbol-only,Probe 14 · symbol-only,,True,learned,485,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,18,19,conflicting,Probe 15 · conflicting,,True,shortcut,424,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200153616.json
+42,200153616,pilot,19,20,symbol-only,Probe 16 · symbol-only,,True,other,502,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200153616.json
+42,200153616,pilot,20,21,aligned,Probe 17 · aligned,,True,other,255,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200153616.json
+42,200153616,pilot,22,23,conflicting,Probe 19 · conflicting,,True,shortcut,734,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333,maze-pilot-log-42-200153616.json
+42,200153616,pilot,24,25,symbol-only,Probe 21 · symbol-only,,True,shortcut,440,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333,maze-pilot-log-42-200153616.json
+42,200153616,pilot,25,26,aligned,Probe 22 · aligned,,True,learned,417,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,26,27,aligned,Probe 23 · aligned,,True,learned,347,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200153616.json
+42,200153616,pilot,27,28,aligned,Probe 24 · aligned,,True,other,513,none,True,"[6, 2]","[6, 7]",13,18.66177809777199,0.3076923076923077,maze-pilot-log-42-200153616.json
+42,200178425,pilot,1,2,train,Train · full guidance · reflected,,True,shortcut,135,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,2,3,train,Train · fading guidance · original,,True,learned,457,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,3,4,train,Train · fading guidance · reflected,,True,shortcut,494,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,4,5,conflicting,Probe 1 · conflicting,,True,shortcut,124,none,True,"[6, 2]","[6, 7]",15,23.398743691938197,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,5,6,symbol-only,Probe 2 · symbol-only,,True,other,408,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200178425.json
+42,200178425,pilot,6,7,aligned,Probe 3 · aligned,,True,shortcut,422,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667,maze-pilot-log-42-200178425.json
+42,200178425,pilot,7,8,symbol-only,Probe 4 · symbol-only,,True,learned,486,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,8,9,conflicting,Probe 5 · conflicting,,True,shortcut,407,none,True,"[6, 2]","[6, 7]",13,17.947862376664823,0.46153846153846156,maze-pilot-log-42-200178425.json
+42,200178425,pilot,9,10,symbol-only,Probe 6 · symbol-only,,True,shortcut,637,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,10,11,conflicting,Probe 7 · conflicting,,True,shortcut,122,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,11,12,conflicting,Probe 8 · conflicting,,True,shortcut,496,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,12,13,conflicting,Probe 9 · conflicting,,True,shortcut,497,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,13,14,conflicting,Probe 10 · conflicting,,True,shortcut,236,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222,maze-pilot-log-42-200178425.json
+42,200178425,pilot,14,15,aligned,Probe 11 · aligned,,True,shortcut,166,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,15,16,symbol-only,Probe 12 · symbol-only,,True,shortcut,124,none,True,"[6, 2]","[6, 7]",9,10.625934281777461,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,16,17,aligned,Probe 13 · aligned,,True,learned,442,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,17,18,conflicting,Probe 14 · conflicting,,True,other,377,none,True,"[6, 2]","[6, 7]",13,17.491853096329674,0.3076923076923077,maze-pilot-log-42-200178425.json
+42,200178425,pilot,18,19,aligned,Probe 15 · aligned,,True,shortcut,316,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667,maze-pilot-log-42-200178425.json
+42,200178425,pilot,19,20,symbol-only,Probe 16 · symbol-only,,True,other,255,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200178425.json
+42,200178425,pilot,20,21,symbol-only,Probe 17 · symbol-only,,True,learned,362,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,21,22,aligned,Probe 18 · aligned,,True,learned,417,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,22,23,conflicting,Probe 19 · conflicting,,True,shortcut,261,none,True,"[6, 2]","[6, 7]",15,23.398743691938197,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,23,24,aligned,Probe 20 · aligned,,True,learned,581,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,24,25,aligned,Probe 21 · aligned,,True,other,418,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077,maze-pilot-log-42-200178425.json
+42,200178425,pilot,25,26,aligned,Probe 22 · aligned,,True,learned,517,alternate,True,"[6, 2]","[6, 7]",13,6.993962122782911,0.9230769230769231,maze-pilot-log-42-200178425.json
+42,200178425,pilot,26,27,symbol-only,Probe 23 · symbol-only,,True,shortcut,493,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.3333333333333333,maze-pilot-log-42-200178425.json
+42,200178425,pilot,27,28,symbol-only,Probe 24 · symbol-only,,True,shortcut,229,none,True,"[6, 2]","[6, 7]",15,23.398743691938197,0.3333333333333333,maze-pilot-log-42-200178425.json

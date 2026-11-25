@@ -1,0 +1,163 @@
+{
+  "n_participants": 3,
+  "participants": [
+    {
+      "participant_index": 200153616,
+      "seed": 42,
+      "n_trials": 19,
+      "n_probes": 17,
+      "choices": {
+        "learned": 8,
+        "shortcut": 6,
+        "other": 5
+      },
+      "mean_rt_ms": 424.10526315789474,
+      "median_rt_ms": 424.0,
+      "mean_steps": 13.210526315789474,
+      "mean_control_bits": 12.842369858921534,
+      "median_control_bits": 10.625934281777461,
+      "by_kind": {
+        "symbol-only": {
+          "n": 5,
+          "learned": 3,
+          "shortcut": 1,
+          "other": 1,
+          "timeout": 0,
+          "mean_rt_ms": 397.2
+        },
+        "aligned": {
+          "n": 7,
+          "learned": 2,
+          "shortcut": 2,
+          "other": 3,
+          "timeout": 0,
+          "mean_rt_ms": 393.14285714285717
+        },
+        "conflicting": {
+          "n": 5,
+          "learned": 1,
+          "shortcut": 3,
+          "other": 1,
+          "timeout": 0,
+          "mean_rt_ms": 428.2
+        }
+      },
+      "calibrated_deadline_hint_ms": 502
+    },
+    {
+      "participant_index": 200178425,
+      "seed": 42,
+      "n_trials": 27,
+      "n_probes": 24,
+      "choices": {
+        "shortcut": 16,
+        "learned": 7,
+        "other": 4
+      },
+      "mean_rt_ms": 365.8888888888889,
+      "median_rt_ms": 408.0,
+      "mean_steps": 11.88888888888889,
+      "mean_control_bits": 13.151740116616791,
+      "median_control_bits": 12.906890595608518,
+      "by_kind": {
+        "symbol-only": {
+          "n": 8,
+          "learned": 2,
+          "shortcut": 4,
+          "other": 2,
+          "timeout": 0,
+          "mean_rt_ms": 374.25
+        },
+        "aligned": {
+          "n": 8,
+          "learned": 4,
+          "shortcut": 3,
+          "other": 1,
+          "timeout": 0,
+          "mean_rt_ms": 409.875
+        },
+        "conflicting": {
+          "n": 8,
+          "learned": 0,
+          "shortcut": 7,
+          "other": 1,
+          "timeout": 0,
+          "mean_rt_ms": 315.0
+        }
+      },
+      "calibrated_deadline_hint_ms": 474
+    },
+    {
+      "participant_index": 200188305,
+      "seed": 42,
+      "n_trials": 27,
+      "n_probes": 24,
+      "choices": {
+        "learned": 15,
+        "other": 11,
+        "shortcut": 1
+      },
+      "mean_rt_ms": 293.6666666666667,
+      "median_rt_ms": 250.0,
+      "mean_steps": 14.777777777777779,
+      "mean_control_bits": 15.132965959197467,
+      "median_control_bits": 16.31589021767027,
+      "by_kind": {
+        "symbol-only": {
+          "n": 8,
+          "learned": 3,
+          "shortcut": 1,
+          "other": 4,
+          "timeout": 0,
+          "mean_rt_ms": 325.25
+        },
+        "aligned": {
+          "n": 8,
+          "learned": 5,
+          "shortcut": 0,
+          "other": 3,
+          "timeout": 0,
+          "mean_rt_ms": 187.25
+        },
+        "conflicting": {
+          "n": 8,
+          "learned": 5,
+          "shortcut": 0,
+          "other": 3,
+          "timeout": 0,
+          "mean_rt_ms": 271.5
+        }
+      },
+      "calibrated_deadline_hint_ms": 331
+    }
+  ],
+  "probe_aggregate": {
+    "symbol-only": {
+      "n": 21,
+      "learned": 8,
+      "shortcut": 6,
+      "other": 7,
+      "timeout": 0,
+      "mean_rt_ms": 361.04761904761904,
+      "mean_control_bits": 12.794510825013255
+    },
+    "aligned": {
+      "n": 23,
+      "learned": 11,
+      "shortcut": 5,
+      "other": 7,
+      "timeout": 0,
+      "mean_rt_ms": 327.3478260869565,
+      "mean_control_bits": 12.319071640066202
+    },
+    "conflicting": {
+      "n": 21,
+      "learned": 6,
+      "shortcut": 10,
+      "other": 5,
+      "timeout": 0,
+      "mean_rt_ms": 325.3809523809524,
+      "mean_control_bits": 15.030819212818539
+    }
+  }
+}

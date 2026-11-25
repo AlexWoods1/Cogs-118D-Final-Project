@@ -1,113 +1,153 @@
 # Initial pilot results
 
-**Session:** seed `42`, participant `0`, pilot phase  
-**Date generated from log:** `Data/maze-pilot-log-42-0.json`  
-**N trials:** 28 final attempts (4 train + 24 cue probes; one training restart dropped)
+**Source:** Neon `pilot_sessions` exports under `Data/maze-pilot-log-42-*.json`  
+**Seed:** `42` · **Phase:** pilot · **Completed sessions:** 3  
+**Date pulled:** 2026-11-24
 
-This note summarizes one self-pilot of the reflected-maze task. It is descriptive only: one participant, no inferential tests. Playable export timed every first move (800 ms).
+Descriptive only. No inferential tests. Live playable export timed every first
+move (800 ms). Participant TSN is stored raw; schedules use `TSN % 16`.
 
 ## Study question (brief)
 
-Does time pressure increase learned-route first choices more when the beacon is informative (aligned with the learned side) than when it is uninformative?
+Does time pressure increase learned-route first choices more when the beacon is
+informative (aligned with the learned side) than when it is uninformative?
 
-This pilot session is the cue-probe schedule (symbol-only / aligned / conflicting), used to exercise landmarks and calibrate RTs before the full test factor crossed design.
+These sessions are the cue-probe pilot (symbol-only / aligned / conflicting),
+used to exercise landmarks and calibrate RTs before the full test design.
 
-## Session summary
+## Cohort at a glance
 
-| Measure | Value |
-| --- | --- |
-| First choices | shortcut 15 · other 7 · learned 6 |
-| Mean / median first-choice RT | 420 ms / 444 ms |
-| Mean / median path steps | 11.7 / 13 |
-| Mean / median control information | 13.7 bits / 12.9 bits |
+| TSN | Probes | Learned | Shortcut | Other | Timeout | Calibrated deadline | Mean path control info\* |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 200188305 | 24 | 13 | 1 | 10 | 0 | 400 ms | 15.13 bits |
+| 200153616 | 24 | 6 | 6 | 5 | 7 | 734 ms | 12.84 bits |
+| 200178425 | 24 | 6 | 14 | 4 | 0 | 442 ms | 13.15 bits |
+| **All** | **72** | **25** | **21** | **19** | **7** | — | — |
 
-### First choice by cue kind
+\*Control information is scored only on trials with a logged path of length ≥ 2
+(timeouts with no moves are excluded from the complexity tables).
 
-| Kind | Learned / N | Mean first-choice RT |
+![Cohort first choices, RTs, and control information](pilot-cohort-summary.png)
+
+*Figure 1. Probe first-choice mix, mean RT by participant, and path control
+information by cue kind across the three completed Neon sessions.*
+
+### Probe first choices by cue (all logged probes)
+
+| Kind | N | Learned | Shortcut | Other | Timeout | Mean RT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Symbol-only | 24 | 8 | 6 | 7 | 3 | 416 ms |
+| Aligned | 24 | 11 | 5 | 7 | 1 | 347 ms |
+| Conflicting | 24 | 6 | 10 | 5 | 3 | 385 ms |
+
+Aligned probes show the highest learned rate (11/24). Conflicting probes show
+the highest shortcut rate (10/24). Symbol-only sits between them. Individual
+strategies differ sharply (see per-participant notes).
+
+## Per participant
+
+### TSN 200188305
+
+Fast, learned-leaning. Almost no shortcuts on probes (1/24). Calibrated deadline
+400 ms. Mean control information 15.13 bits on scored paths (longer / more
+exploratory trajectories when not on the learned route).
+
+| Kind | Learned / N | Mean RT |
 | --- | ---: | ---: |
-| Train | 2 / 4 | 526 ms |
-| Symbol-only | 2 / 8 | 402 ms |
-| Aligned | 2 / 8 | 414 ms |
-| Conflicting | 0 / 8 | 389 ms |
+| Symbol-only | 3 / 8 | 325 ms |
+| Aligned | 5 / 8 | 187 ms |
+| Conflicting | 5 / 8 | 272 ms |
 
-Shortcut still dominated. Conflicting probes had no learned first choices in this run.
+![Paths · 200188305](trial-paths-42-200188305.png)
 
-## Path trajectories
+*Figure 2. Paths for TSN 200188305 (blue shortcut, green learned, red other).*
 
-Figure 1 shows the taken path on each trial’s maze geometry. Blue = shortcut first choice, green = learned, red = other. Start is the filled marker; goal is the star.
+![Control information · 200188305](computational-complexity-42-200188305.png)
 
-![Pilot session paths for seed 42 participant 0](trial-paths-42-0.png)
+*Figure 3. Control information by trial for TSN 200188305.*
 
-*Figure 1. Paths for all 28 scored pilot trials.*
+### TSN 200153616
+
+More timeouts (7 probe timeouts) and a slower calibrated deadline (734 ms).
+Mixed first choices; conflicting probes mostly shortcut or timeout.
+
+| Kind | Learned / N | Mean RT |
+| --- | ---: | ---: |
+| Symbol-only | 3 / 8 | 549 ms |
+| Aligned | 2 / 8 | 444 ms |
+| Conflicting | 1 / 8 | 568 ms |
+
+![Paths · 200153616](trial-paths-42-200153616.png)
+
+*Figure 4. Paths for TSN 200153616.*
+
+![Control information · 200153616](computational-complexity-42-200153616.png)
+
+*Figure 5. Control information by trial for TSN 200153616.*
+
+### TSN 200178425
+
+Shortcut-dominant, especially under conflicting beacons (7/8 shortcuts). No
+probe timeouts. Calibrated deadline 442 ms.
+
+| Kind | Learned / N | Mean RT |
+| --- | ---: | ---: |
+| Symbol-only | 2 / 8 | 374 ms |
+| Aligned | 4 / 8 | 410 ms |
+| Conflicting | 0 / 8 | 315 ms |
+
+![Paths · 200178425](trial-paths-42-200178425.png)
+
+*Figure 6. Paths for TSN 200178425.*
+
+![Control information · 200178425](computational-complexity-42-200178425.png)
+
+*Figure 7. Control information by trial for TSN 200178425.*
 
 ## Computational complexity (control information)
 
-Following Lancia et al. (2023), **computational complexity** here is empirical **control information**: how many bits a path costs relative to a default policy that prefers the trained learned route.
-
-For a deterministic logged path:
+Following Lancia et al. (2023), **computational complexity** here is empirical
+**control information**: bits a path costs relative to a default policy that
+prefers the trained learned route.
 
 \[
 \hat{I} = \sum_t -\log_2 \rho(a_t \mid s_t)
 \]
 
-where \(\rho\) puts most mass on the next learned-route step when the agent is on that route (else uniform over legal moves). Code: [`Analysis/computational_complexity.py`](../Analysis/computational_complexity.py). Per-trial table: [`computational-complexity-42-0.csv`](computational-complexity-42-0.csv).
-
-![Control information by trial and cue kind](computational-complexity-42-0.png)
-
-*Figure 2. Left: control information (bits) by trial, colored by first choice. Right: distribution by cue kind (all first moves were timed in this export).*
-
-### Per-trial values
-
-| Trial | Kind | First choice | RT (ms) | Steps | Control info (bits) | Default-follow rate |
-| ---: | --- | --- | ---: | ---: | ---: | ---: |
-| 1 | train | learned | 459 | 13 | 6.99 | 0.92 |
-| 2 | train | other | 542 | 13 | 18.08 | 0.31 |
-| 3 | train | shortcut | 589 | 9 | 12.91 | 0.22 |
-| 4 | train | learned | 513 | 13 | 6.99 | 0.92 |
-| 5 | aligned | shortcut | 390 | 11 | 16.08 | 0.27 |
-| 6 | conflicting | other | 617 | 13 | 17.49 | 0.31 |
-| 7 | conflicting | shortcut | 139 | 15 | 23.98 | 0.33 |
-| 8 | conflicting | shortcut | 533 | 9 | 12.91 | 0.22 |
-| 9 | symbol-only | shortcut | 470 | 9 | 10.63 | 0.44 |
-| 10 | conflicting | shortcut | 185 | 9 | 10.63 | 0.33 |
-| 11 | conflicting | shortcut | 186 | 9 | 10.63 | 0.44 |
-| 12 | symbol-only | other | 192 | 13 | 18.66 | 0.31 |
-| 13 | aligned | shortcut | 139 | 9 | 10.63 | 0.44 |
-| 14 | symbol-only | shortcut | 347 | 9 | 12.91 | 0.22 |
-| 15 | aligned | other | 412 | 13 | 18.08 | 0.31 |
-| 16 | aligned | learned | 543 | 13 | 6.99 | 0.92 |
-| 17 | conflicting | other | 462 | 13 | 18.08 | 0.31 |
-| 18 | symbol-only | learned | 261 | 13 | 18.38 | 0.38 |
-| 19 | conflicting | shortcut | 421 | 9 | 12.91 | 0.33 |
-| 20 | symbol-only | learned | 572 | 17 | 16.79 | 0.76 |
-| 21 | aligned | shortcut | 366 | 15 | 12.32 | 0.87 |
-| 22 | symbol-only | shortcut | 430 | 9 | 12.91 | 0.33 |
-| 23 | conflicting | other | 572 | 13 | 17.49 | 0.31 |
-| 24 | symbol-only | other | 421 | 13 | 17.49 | 0.31 |
-| 25 | symbol-only | shortcut | 526 | 9 | 10.63 | 0.33 |
-| 26 | aligned | shortcut | 406 | 15 | 12.32 | 0.87 |
-| 27 | aligned | learned | 482 | 13 | 6.99 | 0.92 |
-| 28 | aligned | shortcut | 574 | 9 | 12.91 | 0.22 |
+Code: [`Analysis/computational_complexity.py`](../Analysis/computational_complexity.py).
+Cohort table: [`pilot-cohort-trials.csv`](pilot-cohort-trials.csv).
+Per-session CSVs: `computational-complexity-42-<TSN>.csv`.
 
 ### Pattern notes
 
-- Learned first choices keep control information low when the path stays on route (~7 bits on several trials).
-- Shortcut and exploratory paths cost more bits; the highest costs include wandering / backtracking.
-- Conflicting beacons never produced a learned first choice in this single pilot.
+- Aligned cues associate with more learned first choices in the pooled sample.
+- Conflicting cues associate with more shortcuts (clearest in TSN 200178425).
+- Learned first choices that stay on route keep control information low;
+  shortcut and exploratory paths cost more bits.
+- Between-participant strategy variance is large at N = 3; treat cue contrasts
+  as exploratory calibration, not study conclusions.
 
 ## What is not estimated yet
 
-**Policy complexity** \(I(S;A)\) (Lai & Gershman, 2024) — mutual information between states and actions — needs many repeated visits per state within a condition. One pilot session is still sparse for a stable Hutter / Dirichlet MI estimate, so that metric is omitted.
+**Policy complexity** \(I(S;A)\) (Lai & Gershman, 2024) needs many repeated
+state–action visits per condition. Three pilot sessions remain sparse for a
+stable mutual-information estimate, so that metric is omitted.
 
 ## Reproduce
 
 ```sh
-uv run --with matplotlib python Analysis/computational_complexity.py
-uv run --with matplotlib python Data/_plot_trials.py
+# Pull completed (+ optional --all) sessions from Neon
+node scripts/export-sessions.mjs --all
+
+# Per-session complexity + path plots
+uv run --with matplotlib python Analysis/computational_complexity.py --log Data/maze-pilot-log-42-200188305.json
+uv run --with matplotlib python Data/_plot_trials.py --log Data/maze-pilot-log-42-200188305.json
+
+# Cohort aggregate
+uv run --with matplotlib python Analysis/pilot_cohort.py
 ```
 
-Inputs: `Data/maze-pilot-log-42-0.json` (and matching move CSV).  
-Outputs: `Results/computational-complexity-42-0.csv`, plots under `media/` (copied into `Results/` for this note).
+Outputs land in `Results/` (and copies under `media/`).
 
 ## References
 
