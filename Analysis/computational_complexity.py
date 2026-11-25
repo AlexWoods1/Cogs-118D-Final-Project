@@ -111,7 +111,11 @@ def path_control_information(
 
 def trial_schedule(seed: int, participant_index: int) -> list[Maze]:
     """Flatten generated test mazes into presentation order."""
-    return [trial.maze for block in generate_blocks(seed, participant_index) for trial in block.trials]
+    return [
+        trial.maze
+        for block in generate_blocks(seed, participant_index)
+        for trial in block.trials
+    ]
 
 
 def analyze_log(
@@ -134,9 +138,7 @@ def analyze_log(
         path = trial.get("path") or []
         if not isinstance(path, Sequence) or len(path) < 2:
             continue
-        metrics = path_control_information(
-            mazes[index], path, prefer_mass=prefer_mass
-        )
+        metrics = path_control_information(mazes[index], path, prefer_mass=prefer_mass)
         rows.append(
             {
                 "seed": seed,
@@ -203,7 +205,9 @@ def plot_control_information(rows: Sequence[Mapping[str, object]], path: Path) -
     ax.legend(title="First choice", frameon=False)
 
     ax2 = axes[1]
-    timed_vals = [float(row["control_information_bits"]) for row in rows if row["timed"]]
+    timed_vals = [
+        float(row["control_information_bits"]) for row in rows if row["timed"]
+    ]
     untimed_vals = [
         float(row["control_information_bits"]) for row in rows if not row["timed"]
     ]

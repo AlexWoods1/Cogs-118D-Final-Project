@@ -26,13 +26,19 @@ from maze import (
     verify_maze,
 )
 from maze_trials import (
-    BEACON_EDGES,
     Phase,
     Side,
     Symbol,
     Trial,
     generate_blocks,
     generate_probes,
+)
+from offline_html import write_offline_html
+from session_cli import (
+    add_output_arg,
+    add_phase_arg,
+    add_seed_participant_args,
+    reject_negative_participant_index,
 )
 
 type FirstChoice = Literal["learned", "shortcut", "other", "timeout"]
@@ -152,18 +158,25 @@ def calibrate_deadline_ms(
     return max(floor_ms, ordered[index])
 
 
+def _group_records(
+    records: list[dict[str, object]], group_key: str
+) -> dict[str, list[dict[str, object]]]:
+    """Bucket trial records by a string field, defaulting missing values to unknown."""
+    buckets: dict[str, list[dict[str, object]]] = {}
+    for record in records:
+        key = str(record.get(group_key) or "unknown")
+        buckets.setdefault(key, []).append(record)
+    return buckets
+
+
 def summarize_first_choices(
     records: list[dict[str, object]],
     *,
     group_key: str = "kind",
 ) -> dict[str, dict[str, object]]:
     """Aggregate first decisions and mean RT by cue or landmark group."""
-    buckets: dict[str, list[dict[str, object]]] = {}
-    for record in records:
-        key = str(record.get(group_key) or "unknown")
-        buckets.setdefault(key, []).append(record)
     summary: dict[str, dict[str, object]] = {}
-    for key, group in buckets.items():
+    for key, group in _group_records(records, group_key).items():
         counts = Counter(str(item.get("firstChoice") or "none") for item in group)
         times = [
             int(item["firstChoiceRtMs"])
@@ -198,12 +211,8 @@ def summarize_later_continuations(
     group_key: str = "landmark",
 ) -> dict[str, dict[str, object]]:
     """Aggregate later-junction continuation choices separately from first moves."""
-    buckets: dict[str, list[dict[str, object]]] = {}
-    for record in records:
-        key = str(record.get(group_key) or "unknown")
-        buckets.setdefault(key, []).append(record)
     summary: dict[str, dict[str, object]] = {}
-    for key, group in buckets.items():
+    for key, group in _group_records(records, group_key).items():
         counts = Counter(str(item.get("laterContinuation") or "none") for item in group)
         summary[key] = {"n": len(group), "continuations": dict(counts)}
     return summary
@@ -260,41 +269,36 @@ def analyze_session_log(payload: Mapping[str, object]) -> dict[str, object]:
     }
 
 
+def _append_mapping_section(lines: list[str], title: str, mapping: object) -> None:
+    """Append a titled section that lists mapping entries or (none)."""
+    lines.extend(["", title])
+    if isinstance(mapping, Mapping) and mapping:
+        for key, value in mapping.items():
+            lines.append(f"  {key}: {value}")
+    else:
+        lines.append("  (none)")
+
+
 def format_analysis_report(report: Mapping[str, object]) -> str:
     """Render a plain-text condition report for the terminal or download."""
     lines = [
         f"Seed {report.get('seed')} · Participant {report.get('participant_index')} · "
         f"Phase {report.get('phase')} · Trials {report.get('n_trials')}",
-        "",
-        "First choices by cue kind:",
     ]
-    by_kind = report.get("by_cue_kind")
-    if isinstance(by_kind, Mapping) and by_kind:
-        for kind, stats in by_kind.items():
-            lines.append(f"  {kind}: {stats}")
-    else:
-        lines.append("  (none)")
-    lines.extend(["", "First choices by landmark:"])
-    by_landmark = report.get("by_landmark")
-    if isinstance(by_landmark, Mapping) and by_landmark:
-        for landmark, stats in by_landmark.items():
-            lines.append(f"  {landmark}: {stats}")
-    else:
-        lines.append("  (none)")
-    lines.extend(["", "Timed − untimed learned-choice delta by landmark:"])
-    deltas = report.get("learned_choice_delta_by_landmark")
-    if isinstance(deltas, Mapping) and deltas:
-        for landmark, delta in deltas.items():
-            lines.append(f"  {landmark}: {delta}")
-    else:
-        lines.append("  (none)")
-    lines.extend(["", "Later continuations:"])
-    continuations = report.get("later_continuations")
-    if isinstance(continuations, Mapping) and continuations:
-        for key, stats in continuations.items():
-            lines.append(f"  {key}: {stats}")
-    else:
-        lines.append("  (none)")
+    _append_mapping_section(
+        lines, "First choices by cue kind:", report.get("by_cue_kind")
+    )
+    _append_mapping_section(
+        lines, "First choices by landmark:", report.get("by_landmark")
+    )
+    _append_mapping_section(
+        lines,
+        "Timed − untimed learned-choice delta by landmark:",
+        report.get("learned_choice_delta_by_landmark"),
+    )
+    _append_mapping_section(
+        lines, "Later continuations:", report.get("later_continuations")
+    )
     deadline = report.get("calibrated_deadline_ms")
     lines.extend(
         [
@@ -363,7 +367,7 @@ def _play_trial(
         "guidance": guidance,
         "reflected": trial.reflected,
         "symbol": trial.orientation_symbol,
-        "beacon": BEACON_EDGES[trial.beacon_side] if trial.beacon_side else None,
+        "beacon": trial.beacon_edge,
         "edges": sorted(trial.maze.open_edges),
         "learned_side": trial.learned_side,
         "learned_route": trial.maze.learned_route,
@@ -390,24 +394,18 @@ def _training_trial(reflected: bool, guidance: Guidance, label: str) -> PlayTria
 def training_trials() -> list[PlayTrial]:
     """Train both reflections with full guidance, then fade the path cue."""
     trials: list[PlayTrial] = []
-    for reflected in (False, True):
-        orientation = "reflected" if reflected else "original"
-        trials.append(
-            _training_trial(
-                reflected,
-                "full",
-                f"Train · full guidance · {orientation}",
+    guidances: tuple[Guidance, ...] = ("full", "fade")
+    for guidance in guidances:
+        guidance_label = "full guidance" if guidance == "full" else "fading guidance"
+        for reflected in (False, True):
+            orientation = "reflected" if reflected else "original"
+            trials.append(
+                _training_trial(
+                    reflected,
+                    guidance,
+                    f"Train · {guidance_label} · {orientation}",
+                )
             )
-        )
-    for reflected in (False, True):
-        orientation = "reflected" if reflected else "original"
-        trials.append(
-            _training_trial(
-                reflected,
-                "fade",
-                f"Train · fading guidance · {orientation}",
-            )
-        )
     return trials
 
 
@@ -465,14 +463,14 @@ def play_session(
 def write_playable(data: PlayData, output: Path) -> None:
     """Embed session data and the participant client in one HTML file."""
     source = Path(__file__).parent
-    template = (source / "pilot_play.html").read_text(encoding="utf-8")
-    script = (source / "pilot_play.js").read_text(encoding="utf-8")
-    json_data = json.dumps(data, ensure_ascii=True, separators=(",", ":"))
-    html = template.replace("<!-- SESSION_DATA -->", json_data).replace(
-        "<!-- PLAY_SCRIPT -->", script
+    write_offline_html(
+        template_path=source / "pilot_play.html",
+        script_path=source / "pilot_play.js",
+        data=data,
+        output=output,
+        data_marker="<!-- SESSION_DATA -->",
+        script_marker="<!-- PLAY_SCRIPT -->",
     )
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(html, encoding="utf-8")
 
 
 def _parse_args() -> argparse.Namespace:
@@ -480,9 +478,8 @@ def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Export or analyze an offline playable maze pilot session."
     )
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--participant-index", type=int, default=0)
-    parser.add_argument("--phase", choices=("test", "pilot"), default="pilot")
+    add_seed_participant_args(parser)
+    add_phase_arg(parser, default="pilot")
     parser.add_argument(
         "--deadline-ms",
         type=int,
@@ -501,10 +498,9 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="Analyze a downloaded JSON play log instead of exporting HTML.",
     )
-    parser.add_argument("--output", type=Path, default=Path("build/maze-pilot.html"))
+    add_output_arg(parser, default=Path("build/maze-pilot.html"))
     args = parser.parse_args()
-    if args.participant_index < 0:
-        parser.error("--participant-index must be nonnegative")
+    reject_negative_participant_index(parser, args)
     if args.deadline_ms is not None and args.deadline_ms <= 0:
         parser.error("--deadline-ms must be positive")
     if args.max_trials is not None and args.max_trials <= 0:

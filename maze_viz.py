@@ -1,5 +1,4 @@
 import argparse
-import json
 from pathlib import Path
 from typing import TypedDict
 
@@ -15,12 +14,17 @@ from maze import (
     Maze,
 )
 from maze_trials import (
-    BEACON_EDGES,
     ProbeKind,
     Symbol,
     Trial,
     generate_blocks,
     generate_probes,
+)
+from offline_html import write_offline_html
+from session_cli import (
+    add_output_arg,
+    add_seed_participant_args,
+    reject_negative_participant_index,
 )
 
 PROBE_LABELS: dict[ProbeKind, str] = {
@@ -62,7 +66,11 @@ def _shortcut(maze: Maze) -> list[Cell]:
     distances = maze.distances_to_goal()
     # The verifier guarantees the center exit is on a shortest route.
     path = [START, CENTER_ENTRY]
+    # Cap steps so a broken descent cannot loop forever under mutation testing.
+    max_cells = WIDTH * HEIGHT
     while path[-1] != GOAL:
+        if len(path) >= max_cells:
+            raise RuntimeError("Shortcut search exceeded the grid cell bound")
         cell = path[-1]
         path.append(
             next(
@@ -81,7 +89,7 @@ def _preview_trial(trial: Trial, label: str) -> PreviewTrial:
         "label": label,
         "reflected": trial.reflected,
         "symbol": trial.orientation_symbol,
-        "beacon": BEACON_EDGES[trial.beacon_side] if trial.beacon_side else None,
+        "beacon": trial.beacon_edge,
         "edges": sorted(trial.maze.open_edges),
         "learned": trial.maze.learned_route,
         "shortcut": _shortcut(trial.maze),
@@ -124,27 +132,24 @@ def _preview_data(seed: int, participant_index: int) -> PreviewData:
 def _write_preview(data: PreviewData, output: Path) -> None:
     """Embed data and rendering code in a self-contained HTML file."""
     source = Path(__file__).parent
-    template = (source / "maze_viz.html").read_text(encoding="utf-8")
-    script = (source / "maze_viz.js").read_text(encoding="utf-8")
-    json_data = json.dumps(data, ensure_ascii=True, separators=(",", ":"))
-    # Inline both sources so the exported preview can run from a file URL offline.
-    html = template.replace("<!-- TRIAL_DATA -->", json_data).replace(
-        "<!-- PREVIEW_SCRIPT -->", script
+    write_offline_html(
+        template_path=source / "maze_viz.html",
+        script_path=source / "maze_viz.js",
+        data=data,
+        output=output,
+        data_marker="<!-- TRIAL_DATA -->",
+        script_marker="<!-- PREVIEW_SCRIPT -->",
     )
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(html, encoding="utf-8")
 
 
 def _parse_args() -> argparse.Namespace:
     """Read and validate the preview export options."""
     parser = argparse.ArgumentParser(description="Export an interactive maze preview.")
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--participant-index", type=int, default=0)
-    parser.add_argument("--output", type=Path, default=Path("build/maze-preview.html"))
+    add_seed_participant_args(parser)
+    add_output_arg(parser, default=Path("build/maze-preview.html"))
     args = parser.parse_args()
     # Match the participant indexing accepted by the trial generator.
-    if args.participant_index < 0:
-        parser.error("--participant-index must be nonnegative")
+    reject_negative_participant_index(parser, args)
     return args
 
 

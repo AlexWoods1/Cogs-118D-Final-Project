@@ -10,10 +10,16 @@ from maze import (
     INITIAL_VISIBLE_CELLS,
     START,
     WIDTH,
+    Edge,
     Maze,
     build_template,
     edge_between,
     verify_maze,
+)
+from session_cli import (
+    add_phase_arg,
+    add_seed_participant_args,
+    reject_negative_participant_index,
 )
 
 type Side = Literal["left", "right"]
@@ -67,6 +73,11 @@ class Trial:
         """Return the symbol participants learn for this orientation."""
         # The symbol stays valid in every beacon condition.
         return SYMBOLS[self.learned_side]
+
+    @property
+    def beacon_edge(self) -> Edge | None:
+        """Return the beacon wall boundary in participant coordinates, if any."""
+        return BEACON_EDGES[self.beacon_side] if self.beacon_side else None
 
 
 @dataclass(frozen=True)
@@ -174,7 +185,7 @@ def _trial_record(trial: Trial) -> dict[str, object]:
         "open_edges": sorted(trial.maze.open_edges),
         "orientation_symbol": trial.orientation_symbol,
         "beacon_side": trial.beacon_side,
-        "beacon_edge": BEACON_EDGES[trial.beacon_side] if trial.beacon_side else None,
+        "beacon_edge": trial.beacon_edge,
         "learned_side": trial.learned_side,
         "learned_route": trial.maze.learned_route,
         "later_junction": trial.maze.later_junction,
@@ -182,16 +193,25 @@ def _trial_record(trial: Trial) -> dict[str, object]:
     }
 
 
+def grid_metadata() -> dict[str, object]:
+    """Return the shared grid fields used by JSON and offline exports."""
+    return {
+        "width": WIDTH,
+        "height": HEIGHT,
+        "start": START,
+        "goal": GOAL,
+        "initial_visible_cells": sorted(INITIAL_VISIBLE_CELLS),
+    }
+
+
 def _parse_args() -> argparse.Namespace:
     """Parse and validate the generator command-line options."""
     parser = argparse.ArgumentParser(description="Generate verified edge-maze trials.")
-    parser.add_argument("--seed", type=int, required=True)
-    parser.add_argument("--participant-index", type=int, default=0)
-    parser.add_argument("--phase", choices=("test", "pilot"), default="test")
+    add_seed_participant_args(parser, seed_required=True)
+    add_phase_arg(parser, default="test")
     args = parser.parse_args()
     # Surface the same constraint used by the scheduler as a command-line error.
-    if args.participant_index < 0:
-        parser.error("--participant-index must be nonnegative")
+    reject_negative_participant_index(parser, args)
     return args
 
 
@@ -203,13 +223,7 @@ def _session_record(
         "seed": seed,
         "participant_index": participant_index,
         "phase": phase,
-        "grid": {
-            "width": WIDTH,
-            "height": HEIGHT,
-            "start": START,
-            "goal": GOAL,
-            "initial_visible_cells": sorted(INITIAL_VISIBLE_CELLS),
-        },
+        "grid": grid_metadata(),
     }
     # Test trials export in blocks, while pilot probes export in presentation order.
     if phase == "test":

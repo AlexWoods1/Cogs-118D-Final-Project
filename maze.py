@@ -78,12 +78,21 @@ class Maze:
         # Search outwards from the goal because every open edge is bidirectional.
         frontier = deque([GOAL])
         distances = {GOAL: 0}
+        # Bound expansions so a broken revisit check cannot loop forever.
+        max_expansions = WIDTH * HEIGHT
+        expansions = 0
         while frontier:
+            expansions += 1
+            if expansions > max_expansions:
+                raise RuntimeError("Distance search exceeded the grid cell bound")
             cell = frontier.popleft()
             for neighbor in self.neighbors(cell):
-                if neighbor != avoid and neighbor not in distances:
-                    distances[neighbor] = distances[cell] + 1
-                    frontier.append(neighbor)
+                if neighbor == avoid:
+                    continue
+                if neighbor in distances:
+                    continue
+                distances[neighbor] = distances[cell] + 1
+                frontier.append(neighbor)
         return distances
 
 

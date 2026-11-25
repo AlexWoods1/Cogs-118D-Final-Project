@@ -557,16 +557,32 @@ function commitTrialLog() {
  * @param {string} groupKey
  * @returns {Record<string, {n: number, choices: Record<string, number>, meanRtMs: number | null}>}
  */
-function summarizeChoices(rows, groupKey) {
+/**
+ * Bucket trial logs by a string field, defaulting missing values to unknown.
+ * @param {TrialLog[]} rows
+ * @param {string} groupKey
+ * @returns {Record<string, TrialLog[]>}
+ */
+function groupLogs(rows, groupKey) {
   /** @type {Record<string, TrialLog[]>} */
   const buckets = {};
   for (const row of rows) {
     const key = String(/** @type {Record<string, unknown>} */ (row)[groupKey] ?? 'unknown');
     (buckets[key] ??= []).push(row);
   }
+  return buckets;
+}
+
+/**
+ * Aggregate first decisions and mean RT by cue or landmark group.
+ * @param {TrialLog[]} rows
+ * @param {string} groupKey
+ * @returns {Record<string, {n: number, choices: Record<string, number>, meanRtMs: number | null}>}
+ */
+function summarizeChoices(rows, groupKey) {
   /** @type {Record<string, {n: number, choices: Record<string, number>, meanRtMs: number | null}>} */
   const summary = {};
-  for (const [key, group] of Object.entries(buckets)) {
+  for (const [key, group] of Object.entries(groupLogs(rows, groupKey))) {
     /** @type {Record<string, number>} */
     const choices = {};
     const times = [];
@@ -593,15 +609,9 @@ function summarizeChoices(rows, groupKey) {
  * @returns {Record<string, {n: number, continuations: Record<string, number>}>}
  */
 function summarizeContinuations(rows, groupKey) {
-  /** @type {Record<string, TrialLog[]>} */
-  const buckets = {};
-  for (const row of rows) {
-    const key = String(/** @type {Record<string, unknown>} */ (row)[groupKey] ?? 'unknown');
-    (buckets[key] ??= []).push(row);
-  }
   /** @type {Record<string, {n: number, continuations: Record<string, number>}>} */
   const summary = {};
-  for (const [key, group] of Object.entries(buckets)) {
+  for (const [key, group] of Object.entries(groupLogs(rows, groupKey))) {
     /** @type {Record<string, number>} */
     const continuations = {};
     for (const item of group) {

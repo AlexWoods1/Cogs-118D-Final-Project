@@ -29,8 +29,10 @@ also_copy = [
     "main.py",
     "maze_viz.html",
     "maze_viz.js",
+    "offline_html.py",
     "pilot_play.py",
     "pilot_play.html",
     "pilot_play.js",
+    "session_cli.py",
 ]
 

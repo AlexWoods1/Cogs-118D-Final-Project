@@ -128,3 +128,22 @@ def test_preview_rejects_a_negative_participant_index(
     # Argparse should stop at validation before generating any files.
     assert error.value.code == 2
     assert "--participant-index must be nonnegative" in capsys.readouterr().err
+
+
+def test_write_preview_uses_lowercase_asset_filenames(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Offline export must open the committed lowercase HTML and JS assets."""
+    calls: list[dict[str, object]] = []
+
+    def capture(**kwargs: object) -> None:
+        calls.append(kwargs)
+        output = kwargs["output"]
+        assert isinstance(output, Path)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text("<html></html>", encoding="utf-8")
+
+    monkeypatch.setattr(maze_viz, "write_offline_html", capture)
+    maze_viz._write_preview(maze_viz._preview_data(42, 0), tmp_path / "out.html")
+    assert calls[0]["template_path"].name == "maze_viz.html"
+    assert calls[0]["script_path"].name == "maze_viz.js"

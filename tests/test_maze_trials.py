@@ -3,6 +3,8 @@ import sys
 from collections import Counter
 from dataclasses import replace
 from itertools import pairwise
+from random import Random
+from unittest.mock import patch
 
 import pytest
 
@@ -64,7 +66,9 @@ def test_verifier_rejects_a_wall_that_leaks_orientation() -> None:
     # Add a visible opening on only one side of the mirror axis.
     revealing_edge = edge_between((7, 2), (7, 3))
     broken = replace(maze, open_edges=maze.open_edges | {revealing_edge})
-    with pytest.raises(ValueError, match="Visible walls reveal the reflection"):
+    with pytest.raises(
+        ValueError, match="^Visible walls reveal the reflection at the first decision$"
+    ):
         verify_maze(broken)
 
 
@@ -263,3 +267,17 @@ def test_generator_cli_defaults_to_the_first_test_session(
         0,
         "test",
     )
+
+
+def test_generate_blocks_uses_the_test_phase_stream() -> None:
+    """Block scheduling must key the RNG with the test phase label."""
+    with patch("maze_trials._session_rng", return_value=Random(0)) as rng:
+        generate_blocks(11, 2)
+    rng.assert_called_once_with(11, 2, "test")
+
+
+def test_generate_probes_uses_the_pilot_phase_stream() -> None:
+    """Probe scheduling must key the RNG with the pilot phase and seed."""
+    with patch("maze_trials._session_rng", return_value=Random(0)) as rng:
+        generate_probes(11, 2)
+    rng.assert_called_once_with(11, 2, "pilot")
