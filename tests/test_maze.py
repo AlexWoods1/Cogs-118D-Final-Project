@@ -19,7 +19,8 @@ from maze_trials import _learned_side, _session_rng
 def test_edge_between_uses_lexicographic_order() -> None:
     """Canonical edge pairs must be independent of endpoint order."""
     first, second = (1, 0), (0, 0)
-    assert edge_between(first, second) == edge_between(second, first) == (first, second)
+    canonical = ((0, 0), (1, 0))
+    assert edge_between(first, second) == edge_between(second, first) == canonical
 
 
 def test_reflect_cell_fixes_the_center_column() -> None:
@@ -40,7 +41,7 @@ def test_neighbors_and_can_move_follow_open_edges() -> None:
 def test_distances_to_goal_honors_avoid() -> None:
     """Excluding the goal returns no reachable distances."""
     maze = build_template(2, 0)
-  assert maze.distances_to_goal(avoid=GOAL) == {}
+    assert maze.distances_to_goal(avoid=GOAL) == {}
 
 
 def test_build_template_rejects_invalid_parameters() -> None:
@@ -53,10 +54,11 @@ def test_build_template_rejects_invalid_parameters() -> None:
 
 def test_learned_side_reads_first_horizontal_move() -> None:
     """Scoring side follows the first move away from the center column."""
-    left = build_template(2, 0)
-    right = left.reflected()
-    assert _learned_side(left) == "left"
-    assert _learned_side(right) == "right"
+    # Templates train the right-side route; reflection flips scoring to left.
+    original = build_template(2, 0)
+    mirrored = original.reflected()
+    assert _learned_side(original) == "right"
+    assert _learned_side(mirrored) == "left"
 
 
 def test_session_rng_rejects_negative_participant_index() -> None:

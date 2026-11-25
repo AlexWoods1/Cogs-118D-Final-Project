@@ -192,6 +192,119 @@ def learned_choice_delta(
     return rate(timed_records) - rate(untimed_records)
 
 
+def summarize_later_continuations(
+    records: list[dict[str, object]],
+    *,
+    group_key: str = "landmark",
+) -> dict[str, dict[str, object]]:
+    """Aggregate later-junction continuation choices separately from first moves."""
+    buckets: dict[str, list[dict[str, object]]] = {}
+    for record in records:
+        key = str(record.get(group_key) or "unknown")
+        buckets.setdefault(key, []).append(record)
+    summary: dict[str, dict[str, object]] = {}
+    for key, group in buckets.items():
+        counts = Counter(str(item.get("laterContinuation") or "none") for item in group)
+        summary[key] = {"n": len(group), "continuations": dict(counts)}
+    return summary
+
+
+def analyze_session_log(payload: Mapping[str, object]) -> dict[str, object]:
+    """Build condition-level reports and a calibrated deadline from a play log."""
+    trials = [
+        dict(item) for item in payload.get("trials", []) if isinstance(item, Mapping)
+    ]
+    probes = [
+        trial
+        for trial in trials
+        if trial.get("kind") in {"symbol-only", "aligned", "conflicting"}
+    ]
+    test_trials = [trial for trial in trials if trial.get("landmark") is not None]
+    timed = [trial for trial in test_trials if trial.get("timed")]
+    untimed = [trial for trial in test_trials if not trial.get("timed")]
+    probe_rts = [
+        int(trial["firstChoiceRtMs"])
+        for trial in probes
+        if isinstance(trial.get("firstChoiceRtMs"), int)
+        and trial.get("firstChoice") != "timeout"
+    ]
+    by_landmark = summarize_first_choices(test_trials, group_key="landmark")
+    deltas = {
+        landmark: learned_choice_delta(
+            [trial for trial in timed if trial.get("landmark") == landmark],
+            [trial for trial in untimed if trial.get("landmark") == landmark],
+        )
+        for landmark in sorted(
+            {
+                str(trial.get("landmark"))
+                for trial in test_trials
+                if trial.get("landmark") is not None
+            }
+        )
+    }
+    return {
+        "seed": payload.get("seed"),
+        "participant_index": payload.get("participantIndex")
+        or payload.get("participant_index"),
+        "phase": payload.get("phase"),
+        "n_trials": len(trials),
+        "by_cue_kind": summarize_first_choices(probes, group_key="kind"),
+        "by_landmark": by_landmark,
+        "learned_choice_delta_by_landmark": deltas,
+        "later_continuations": summarize_later_continuations(
+            test_trials or probes, group_key="landmark" if test_trials else "kind"
+        ),
+        "calibrated_deadline_ms": (
+            calibrate_deadline_ms(probe_rts) if probe_rts else None
+        ),
+    }
+
+
+def format_analysis_report(report: Mapping[str, object]) -> str:
+    """Render a plain-text condition report for the terminal or download."""
+    lines = [
+        f"Seed {report.get('seed')} · Participant {report.get('participant_index')} · "
+        f"Phase {report.get('phase')} · Trials {report.get('n_trials')}",
+        "",
+        "First choices by cue kind:",
+    ]
+    by_kind = report.get("by_cue_kind")
+    if isinstance(by_kind, Mapping) and by_kind:
+        for kind, stats in by_kind.items():
+            lines.append(f"  {kind}: {stats}")
+    else:
+        lines.append("  (none)")
+    lines.extend(["", "First choices by landmark:"])
+    by_landmark = report.get("by_landmark")
+    if isinstance(by_landmark, Mapping) and by_landmark:
+        for landmark, stats in by_landmark.items():
+            lines.append(f"  {landmark}: {stats}")
+    else:
+        lines.append("  (none)")
+    lines.extend(["", "Timed − untimed learned-choice delta by landmark:"])
+    deltas = report.get("learned_choice_delta_by_landmark")
+    if isinstance(deltas, Mapping) and deltas:
+        for landmark, delta in deltas.items():
+            lines.append(f"  {landmark}: {delta}")
+    else:
+        lines.append("  (none)")
+    lines.extend(["", "Later continuations:"])
+    continuations = report.get("later_continuations")
+    if isinstance(continuations, Mapping) and continuations:
+        for key, stats in continuations.items():
+            lines.append(f"  {key}: {stats}")
+    else:
+        lines.append("  (none)")
+    deadline = report.get("calibrated_deadline_ms")
+    lines.extend(
+        [
+            "",
+            f"Calibrated deadline (ms): {deadline if deadline is not None else 'n/a'}",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
 MOVE_CSV_FIELDS = (
     "seed",
     "participant_index",
@@ -365,7 +478,7 @@ def write_playable(data: PlayData, output: Path) -> None:
 def _parse_args() -> argparse.Namespace:
     """Read and validate the playable export options."""
     parser = argparse.ArgumentParser(
-        description="Export an offline playable maze pilot session."
+        description="Export or analyze an offline playable maze pilot session."
     )
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--participant-index", type=int, default=0)
@@ -382,6 +495,12 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="Optional cap on exported trials after training/probes are built.",
     )
+    parser.add_argument(
+        "--analyze",
+        type=Path,
+        default=None,
+        help="Analyze a downloaded JSON play log instead of exporting HTML.",
+    )
     parser.add_argument("--output", type=Path, default=Path("build/maze-pilot.html"))
     args = parser.parse_args()
     if args.participant_index < 0:
@@ -394,8 +513,14 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    """Export the playable session and print its absolute path."""
+    """Export a playable session or print an analysis report for a saved log."""
     args = _parse_args()
+    if args.analyze is not None:
+        payload = json.loads(args.analyze.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            raise SystemExit("Play log must be a JSON object")
+        print(format_analysis_report(analyze_session_log(payload)), end="")
+        return
     session = play_session(
         args.seed,
         args.participant_index,

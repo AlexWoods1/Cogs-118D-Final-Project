@@ -56,7 +56,14 @@ Open `build/maze-pilot.html` in a browser. Arrow keys or WASD move the agent.
 Pilot sessions train both reflections with full then fading guidance before the
 cue probes. **Download JSON** keeps trial summaries plus every move attempt;
 **Download CSV** writes one row per attempted move (legal and blocked), including
-timeouts. Use `--max-trials` to cap the exported schedule while calibrating.
+timeouts. After all trials, the page shows a condition report and a calibrated
+deadline. Analyze a saved log from the CLI:
+
+```sh
+uv run python -m pilot_play --analyze path/to/maze-pilot-log.json
+```
+
+Use `--max-trials` to cap the exported schedule while calibrating.
 
 ## Testing
 

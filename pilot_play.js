@@ -430,9 +430,14 @@ function redraw() {
   drawGuidance(ctx, trial);
   drawEndpoint(ctx, data.start, 'S');
   drawEndpoint(ctx, data.goal, 'G');
-  // Cues stay on screen for the trial; they do not unlock walls.
+  // Cues stay on screen only while their cells remain in the revealed fog set.
   if (visible.has(String(data.start))) drawSymbol(ctx, trial.symbol);
-  if (trial.beacon) drawBeacon(ctx, trial.beacon);
+  if (
+    trial.beacon &&
+    (visible.has(String(trial.beacon[0])) || visible.has(String(trial.beacon[1])))
+  ) {
+    drawBeacon(ctx, trial.beacon);
+  }
   drawPlayer(ctx);
 }
 
@@ -543,6 +548,139 @@ function commitTrialLog() {
     path: path.map((cell) => /** @type {Cell} */ ([...cell])),
     reachedGoal: position[0] === data.goal[0] && position[1] === data.goal[1],
   });
+  if (logs.length >= data.trials.length) renderSessionReport();
+}
+
+/**
+ * Count first-choice outcomes for one grouping key.
+ * @param {TrialLog[]} rows
+ * @param {string} groupKey
+ * @returns {Record<string, {n: number, choices: Record<string, number>, meanRtMs: number | null}>}
+ */
+function summarizeChoices(rows, groupKey) {
+  /** @type {Record<string, TrialLog[]>} */
+  const buckets = {};
+  for (const row of rows) {
+    const key = String(/** @type {Record<string, unknown>} */ (row)[groupKey] ?? 'unknown');
+    (buckets[key] ??= []).push(row);
+  }
+  /** @type {Record<string, {n: number, choices: Record<string, number>, meanRtMs: number | null}>} */
+  const summary = {};
+  for (const [key, group] of Object.entries(buckets)) {
+    /** @type {Record<string, number>} */
+    const choices = {};
+    const times = [];
+    for (const item of group) {
+      const choice = item.firstChoice ?? 'none';
+      choices[choice] = (choices[choice] ?? 0) + 1;
+      if (typeof item.firstChoiceRtMs === 'number') times.push(item.firstChoiceRtMs);
+    }
+    summary[key] = {
+      n: group.length,
+      choices,
+      meanRtMs: times.length
+        ? Math.round(times.reduce((sum, value) => sum + value, 0) / times.length)
+        : null,
+    };
+  }
+  return summary;
+}
+
+/**
+ * Count later-junction continuations separately from first moves.
+ * @param {TrialLog[]} rows
+ * @param {string} groupKey
+ * @returns {Record<string, {n: number, continuations: Record<string, number>}>}
+ */
+function summarizeContinuations(rows, groupKey) {
+  /** @type {Record<string, TrialLog[]>} */
+  const buckets = {};
+  for (const row of rows) {
+    const key = String(/** @type {Record<string, unknown>} */ (row)[groupKey] ?? 'unknown');
+    (buckets[key] ??= []).push(row);
+  }
+  /** @type {Record<string, {n: number, continuations: Record<string, number>}>} */
+  const summary = {};
+  for (const [key, group] of Object.entries(buckets)) {
+    /** @type {Record<string, number>} */
+    const continuations = {};
+    for (const item of group) {
+      const value = item.laterContinuation ?? 'none';
+      continuations[value] = (continuations[value] ?? 0) + 1;
+    }
+    summary[key] = { n: group.length, continuations };
+  }
+  return summary;
+}
+
+/**
+ * Suggest a first-move deadline from completed untimed probe RTs.
+ * @param {number[]} times
+ * @param {number} [percentile]
+ * @param {number} [floorMs]
+ * @returns {number | null}
+ */
+function calibrateDeadline(times, percentile = 0.7, floorMs = 400) {
+  if (!times.length) return null;
+  const ordered = [...times].sort((a, b) => a - b);
+  const index = Math.min(
+    ordered.length - 1,
+    Math.max(0, Math.trunc(percentile * (ordered.length - 1))),
+  );
+  return Math.max(floorMs, ordered[index]);
+}
+
+/**
+ * Show condition-level totals once every scheduled trial is logged.
+ * @returns {void}
+ */
+function renderSessionReport() {
+  const probes = logs.filter((row) =>
+    row.kind === 'symbol-only' || row.kind === 'aligned' || row.kind === 'conflicting',
+  );
+  const testTrials = logs.filter((row) => row.landmark !== null);
+  const timed = testTrials.filter((row) => row.timed);
+  const untimed = testTrials.filter((row) => !row.timed);
+  const landmarkKeys = [...new Set(testTrials.map((row) => String(row.landmark)))];
+  /** @type {Record<string, number | null>} */
+  const deltas = {};
+  for (const landmark of landmarkKeys) {
+    const timedRows = timed.filter((row) => String(row.landmark) === landmark);
+    const untimedRows = untimed.filter((row) => String(row.landmark) === landmark);
+    if (!timedRows.length || !untimedRows.length) {
+      deltas[landmark] = null;
+      continue;
+    }
+    const timedRate =
+      timedRows.filter((row) => row.firstChoice === 'learned').length / timedRows.length;
+    const untimedRate =
+      untimedRows.filter((row) => row.firstChoice === 'learned').length /
+      untimedRows.length;
+    deltas[landmark] = Math.round((timedRate - untimedRate) * 1000) / 1000;
+  }
+  const probeRts = probes
+    .map((row) => row.firstChoiceRtMs)
+    .filter(/** @returns {value is number} */ (value) => typeof value === 'number');
+  const report = {
+    byCueKind: summarizeChoices(probes, 'kind'),
+    byLandmark: summarizeChoices(testTrials, 'landmark'),
+    learnedChoiceDeltaByLandmark: deltas,
+    laterContinuations: summarizeContinuations(
+      testTrials.length ? testTrials : probes,
+      testTrials.length ? 'landmark' : 'kind',
+    ),
+    calibratedDeadlineMs: calibrateDeadline(probeRts),
+  };
+  const panel = byId('report');
+  panel.classList.add('visible');
+  panel.textContent = [
+    'Session report',
+    `First choices by cue: ${JSON.stringify(report.byCueKind)}`,
+    `First choices by landmark: ${JSON.stringify(report.byLandmark)}`,
+    `Timed − untimed learned delta: ${JSON.stringify(report.learnedChoiceDeltaByLandmark)}`,
+    `Later continuations: ${JSON.stringify(report.laterContinuations)}`,
+    `Calibrated deadline (ms): ${report.calibratedDeadlineMs ?? 'n/a'}`,
+  ].join('\n');
 }
 
 /**
@@ -823,12 +961,27 @@ function downloadBlob(blob, filename) {
  * @returns {void}
  */
 function downloadLog() {
+  const probes = logs.filter((row) =>
+    row.kind === 'symbol-only' || row.kind === 'aligned' || row.kind === 'conflicting',
+  );
+  const probeRts = probes
+    .map((row) => row.firstChoiceRtMs)
+    .filter(/** @returns {value is number} */ (value) => typeof value === 'number');
   const payload = {
     seed: data.seed,
     participantIndex: data.participantIndex,
     phase: data.phase,
     trials: logs,
     moves: moveRows,
+    analysis: {
+      byCueKind: summarizeChoices(probes, 'kind'),
+      byLandmark: summarizeChoices(
+        logs.filter((row) => row.landmark !== null),
+        'landmark',
+      ),
+      laterContinuations: summarizeContinuations(logs, 'kind'),
+      calibratedDeadlineMs: calibrateDeadline(probeRts),
+    },
   };
   downloadBlob(
     new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' }),

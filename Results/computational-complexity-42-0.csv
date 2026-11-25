@@ -1,0 +1,13 @@
+seed,participant_index,trial_index,trial_number,label,landmark,timed,first_choice,first_choice_rt_ms,later_continuation,reached_goal,start,goal,steps,control_information_bits,default_follow_rate
+42,0,0,1,"Block 1, trial 1 · informative beacon · untimed",informative,False,shortcut,783,none,True,"[6, 2]","[6, 7]",7,10.906890595608518,0.14285714285714285
+42,0,1,2,"Block 1, trial 2 · informative beacon · untimed",informative,False,shortcut,533,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667
+42,0,2,3,"Block 1, trial 3 · informative beacon · untimed",informative,False,learned,373,learned,True,"[6, 2]","[6, 7]",13,1.9760402147856497,1.0
+42,0,3,4,"Block 2, trial 1 · informative beacon · timed",informative,True,shortcut,416,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667
+42,0,4,5,"Block 2, trial 2 · informative beacon · timed",informative,True,learned,307,alternate,True,"[6, 2]","[6, 7]",15,11.315890217670272,0.8666666666666667
+42,0,5,6,"Block 2, trial 3 · informative beacon · timed",informative,True,other,340,none,True,"[6, 2]","[6, 7]",13,18.07681559705083,0.3076923076923077
+42,0,6,7,"Block 3, trial 1 · uninformative beacon · timed",uninformative,True,shortcut,398,none,True,"[6, 2]","[6, 7]",7,10.906890595608518,0.14285714285714285
+42,0,7,8,"Block 3, trial 2 · uninformative beacon · timed",uninformative,True,shortcut,314,none,True,"[6, 2]","[6, 7]",9,12.906890595608518,0.2222222222222222
+42,0,8,9,"Block 3, trial 3 · uninformative beacon · timed",uninformative,True,shortcut,681,none,True,"[6, 2]","[6, 7]",17,22.07681559705083,0.4117647058823529
+42,0,9,10,"Block 4, trial 1 · uninformative beacon · untimed",uninformative,False,shortcut,492,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667
+42,0,10,11,"Block 4, trial 2 · uninformative beacon · untimed",uninformative,False,shortcut,324,alternate,True,"[6, 2]","[6, 7]",19,29.743721659884596,0.3684210526315789
+42,0,11,12,"Block 4, trial 3 · uninformative beacon · untimed",uninformative,False,shortcut,499,alternate,True,"[6, 2]","[6, 7]",15,12.31589021767027,0.8666666666666667

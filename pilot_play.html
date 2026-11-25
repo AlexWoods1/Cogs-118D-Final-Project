@@ -79,10 +79,10 @@
       background: #e6eef1;
     }
     #help { margin-top: 14px; font-size: .9rem; line-height: 1.45; }
-    #log {
+    #log, #report {
       margin-top: 16px;
       padding: 12px;
-      max-height: 180px;
+      max-height: 220px;
       overflow: auto;
       font: 12px/1.4 ui-monospace, Consolas, monospace;
       color: var(--secondary);
@@ -90,6 +90,13 @@
       border-radius: 10px;
       white-space: pre-wrap;
     }
+    #report {
+      display: none;
+      color: #1b2d3a;
+      background: #e8f2ef;
+      border: 1px solid #b7d4cb;
+    }
+    #report.visible { display: block; }
     #instructions {
       padding: clamp(16px, 3vw, 24px);
       background: var(--panel);
@@ -146,6 +153,7 @@
         beacon (when present) are cues only and do not open walls.
       </p>
       <pre id="log" aria-live="polite"></pre>
+      <pre id="report" aria-live="polite"></pre>
     </section>
   </main>
   <script type="application/json" id="data"><!-- SESSION_DATA --></script>

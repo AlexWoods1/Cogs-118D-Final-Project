@@ -155,6 +155,74 @@ def test_summarize_and_delta_compare_cue_conditions() -> None:
     assert pilot_play.learned_choice_delta(timed, untimed) == 0.5
 
 
+def test_analyze_session_log_reports_conditions_and_deadline(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Analysis covers cue kinds, landmark deltas, continuations, and calibration."""
+    payload = {
+        "seed": "42",
+        "participantIndex": "0",
+        "phase": "test",
+        "trials": [
+            {
+                "kind": "symbol-only",
+                "landmark": None,
+                "timed": False,
+                "firstChoice": "learned",
+                "firstChoiceRtMs": 700,
+                "laterContinuation": "learned",
+            },
+            {
+                "kind": None,
+                "landmark": "informative",
+                "timed": False,
+                "firstChoice": "shortcut",
+                "firstChoiceRtMs": 800,
+                "laterContinuation": "alternate",
+            },
+            {
+                "kind": None,
+                "landmark": "informative",
+                "timed": True,
+                "firstChoice": "learned",
+                "firstChoiceRtMs": 500,
+                "laterContinuation": "learned",
+            },
+            {
+                "kind": None,
+                "landmark": "uninformative",
+                "timed": False,
+                "firstChoice": "learned",
+                "firstChoiceRtMs": 650,
+                "laterContinuation": "none",
+            },
+            {
+                "kind": None,
+                "landmark": "uninformative",
+                "timed": True,
+                "firstChoice": "learned",
+                "firstChoiceRtMs": 450,
+                "laterContinuation": "learned",
+            },
+        ],
+    }
+    report = pilot_play.analyze_session_log(payload)
+    assert report["by_cue_kind"]["symbol-only"]["choices"] == {"learned": 1}
+    assert report["learned_choice_delta_by_landmark"]["informative"] == 1.0
+    assert report["learned_choice_delta_by_landmark"]["uninformative"] == 0.0
+    assert report["later_continuations"]["informative"]["continuations"]["learned"] == 1
+    assert report["calibrated_deadline_ms"] == 700
+    log_path = tmp_path / "log.json"
+    log_path.write_text(json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", ["pilot_play", "--analyze", str(log_path)])
+    pilot_play.main()
+    text = capsys.readouterr().out
+    assert "Timed − untimed learned-choice delta" in text
+    assert "Calibrated deadline (ms): 700" in text
+
+
 def test_play_session_includes_training_then_probes() -> None:
     """Pilot sessions train both reflections before the cue probes."""
     pilot = pilot_play.play_session(42, 0, "pilot")
@@ -219,7 +287,9 @@ def test_playable_cli_exports_offline_html(
     assert "function tryMove(" in html
     assert "function drawGuidance(" in html
     assert "function movesCsv(" in html
+    assert "function renderSessionReport(" in html
     assert 'id="download-csv"' in html
+    assert 'id="report"' in html
     embedded = re.search(
         r'<script type="application/json" id="data">(.*?)</script>', html
     )
