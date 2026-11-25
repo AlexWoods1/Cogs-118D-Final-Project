@@ -508,10 +508,10 @@ function updateHud() {
   if (trialDone) {
     byId('status').textContent =
       firstChoice === 'timeout'
-        ? 'First-move deadline missed. Press Next trial or Restart.'
+        ? 'First-move deadline missed. Press Space / Next trial or Restart.'
         : position[0] === data.goal[0] && position[1] === data.goal[1]
-          ? `Goal reached. First choice: ${firstChoice ?? 'none'}; later continuation: ${laterContinuation}.`
-          : 'Trial ended.';
+          ? `Goal reached. First choice: ${firstChoice ?? 'none'}; later continuation: ${laterContinuation}. Press Space for the next trial.`
+          : 'Trial ended. Press Space for the next trial.';
   } else if (trial.guidance === 'full') {
     byId('status').textContent = 'Follow the guided learned route. Symbol maps to the first turn.';
   } else if (trial.guidance === 'fade') {
@@ -1046,6 +1046,12 @@ function downloadCsv() {
  */
 function onKey(event) {
   if (!sessionStarted) return;
+  if (event.key === ' ' || event.code === 'Space') {
+    if (!trialDone || nextButton.disabled) return;
+    event.preventDefault();
+    goNext();
+    return;
+  }
   const key = event.key.toLowerCase();
   /** @type {Record<string, [number, number]>} */
   const steps = {

@@ -134,7 +134,7 @@
         <li>Move from <strong>S</strong> to <strong>G</strong> with arrow keys or WASD. Only open corridors are legal; fog lifts as you explore.</li>
         <li>Training marks the learned route. The landmark above S maps to the first turn: teal circle = left, coral diamond = right.</li>
         <li>Later trials keep that landmark. An amber star beacon may also appear on a wall. Cues are hints only and do not open walls.</li>
-        <li>Every trial is timed: make your first move before the deadline. After each goal, press Next trial. Download the log when finished.</li>
+        <li>Every trial is timed: make your first move before the deadline. After each goal, press <strong>Space</strong> or Next trial. Download the log when finished.</li>
       </ol>
       <button type="button" id="start">Start</button>
     </section>
@@ -144,16 +144,17 @@
       <figure>
         <canvas id="board" tabindex="0" role="img" aria-label="Maze play area"></canvas>
         <div class="toolbar">
-          <button type="button" id="next" disabled>Next trial</button>
+          <button type="button" id="next" disabled>Next trial (Space)</button>
           <button type="button" id="restart" class="secondary">Restart trial</button>
           <button type="button" id="download" class="secondary">Download JSON</button>
           <button type="button" id="download-csv" class="secondary">Download CSV</button>
         </div>
       </figure>
       <p id="help">
-        Use arrow keys or WASD to move. Only open edges are legal. Fog lifts on visited
-        cells. Training shows a fading learned-route guide. The orientation symbol and
-        beacon (when present) are cues only and do not open walls.
+        Use arrow keys or WASD to move. After a trial ends, press Space (or Next trial)
+        to continue. Only open edges are legal. Fog lifts on visited cells. Training
+        shows a fading learned-route guide. The orientation symbol and beacon (when
+        present) are cues only and do not open walls.
       </p>
       <pre id="log" aria-live="polite"></pre>
       <pre id="report" aria-live="polite"></pre>
